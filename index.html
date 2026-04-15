@@ -12,13 +12,11 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: { dark: '#050505', maroon: '#50000A', red: '#B91C1C', accent: '#FF0033' },
-                        surface: { 1: '#0A0A0A', 2: '#111111', 3: '#1A1A1A', 4: '#222222' }
+                        brand: { 50:'#EEF2FF', 100:'#E0E7FF', 200:'#C7D2FE', 300:'#A5B4FC', 400:'#818CF8', 500:'#6366F1', 600:'#4F46E5', 700:'#4338CA' },
+                        surface: { 50:'#FAFBFD', 100:'#F5F6FA', 200:'#EEEEF4', 300:'#E4E5ED' }
                     },
                     fontFamily: { inter: ['Inter', 'sans-serif'] },
                     animation: {
-                        'spin-slow': 'spin 8s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4,0,0.6,1) infinite',
                         'marquee': 'marquee 30s linear infinite',
                         'slide-in-right': 'slideInRight 0.3s ease-out',
                         'slide-in-up': 'slideInUp 0.4s ease-out',
@@ -31,12 +29,12 @@
     </script>
     <style>
         * { font-family: 'Inter', sans-serif; font-feature-settings: "cv02","cv03","cv04","cv11"; }
-        body { background: #050505; color: #fff; }
+        body { background: #FAFBFD; color: #111827; }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
-        ::selection { background: #B91C1C; color: #fff; }
+        ::-webkit-scrollbar-track { background: #F5F6FA; }
+        ::-webkit-scrollbar-thumb { background: #C7D2FE; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #A5B4FC; }
+        ::selection { background: #6366F1; color: #fff; }
 
         @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
         @keyframes slideInRight { 0%{transform:translateX(100%);opacity:0} 100%{transform:translateX(0);opacity:1} }
@@ -57,13 +55,14 @@
         .product-card:hover .quick-actions { opacity: 1; transform: translateY(0); }
         .quick-actions { opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
 
-        .text-gradient { background: linear-gradient(to bottom, #FFFFFF, #FFFFFF, rgba(255,255,255,0.5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .text-gradient { background: linear-gradient(to bottom, #111827, #111827, rgba(17,24,39,0.5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .text-gradient-brand { background: linear-gradient(135deg, #6366F1, #8B5CF6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-        .btn-primary { background: linear-gradient(135deg, #B91C1C, #50000A); transition: all 0.15s ease; }
-        .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 25px rgba(185,28,28,0.4); }
+        .btn-primary { background: linear-gradient(135deg, #6366F1, #4F46E5); color:#fff; transition: all 0.15s ease; }
+        .btn-primary:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(99,102,241,0.35); }
         .btn-primary:active { transform: scale(0.97); }
 
-        .size-btn.active { background: #B91C1C; border-color: #B91C1C; color: #fff; }
+        .size-btn.active { background: #6366F1; border-color: #6366F1; color: #fff; }
 
         .toast { animation: slideInUp 0.4s ease-out, fadeOut 0.4s ease-in 2.6s forwards; }
         @keyframes fadeOut { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(-20px)} }
@@ -72,129 +71,107 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #B91C1C;
-            box-shadow: 0 0 0 2px rgba(185,28,28,0.2);
+            border-color: #6366F1;
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
         }
 
         .hero-glow {
             position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(185,28,28,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
             border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
         }
 
-        .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        .modal-overlay { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-
-        .stripe-bg {
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255,255,255,0.02) 49px, rgba(255,255,255,0.02) 50px);
-        }
+        .nav-blur { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .modal-overlay { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
         .line-clamp-1 { overflow:hidden; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; }
 
-        /* Filter panel styles */
         .filter-select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23737373' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239CA3AF' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
             padding-right: 32px;
         }
 
-        .filter-panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-            opacity: 0;
-        }
-        .filter-panel.open {
-            max-height: 500px;
-            opacity: 1;
-        }
+        .filter-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
+        .filter-panel.open { max-height: 500px; opacity: 1; }
 
-        .sort-menu {
-            transform-origin: top right;
-            transition: all 0.2s ease;
-        }
+        .active-filter-tag { animation: fadeIn 0.2s ease-out; }
 
-        .active-filter-tag {
-            animation: fadeIn 0.2s ease-out;
-        }
+        .card-shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03); }
+        .card-shadow-hover:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <!-- TOAST CONTAINER -->
     <div id="toastContainer" class="fixed top-24 right-4 z-[200] flex flex-col gap-2"></div>
 
     <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] nav-blur bg-brand-dark/80 border-b border-white/5 transition-all duration-300">
+    <nav class="fixed top-0 left-0 right-0 z-[100] nav-blur bg-white/80 border-b border-surface-200 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <a href="#" class="flex items-center gap-2" onclick="goHome()">
-                <div class="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center">
-                    <span class="text-white font-bold text-sm">K</span>
-                </div>
-                <span class="font-bold text-lg tracking-tight">KHAN<span class="text-brand-red">.</span>MART</span>
+                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center"><span class="text-white font-bold text-sm">K</span></div>
+                <span class="font-bold text-lg tracking-tight text-gray-900">KHAN<span class="text-brand-500">.</span>MART</span>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <a href="#" onclick="goHome()" class="text-xs font-medium tracking-wider uppercase text-neutral-400 hover:text-white transition-colors duration-300">Home</a>
-                <a href="#products" class="text-xs font-medium tracking-wider uppercase text-neutral-400 hover:text-white transition-colors duration-300">Shop</a>
-                <a href="#about" class="text-xs font-medium tracking-wider uppercase text-neutral-400 hover:text-white transition-colors duration-300">About</a>
+                <a href="#" onclick="goHome()" class="text-xs font-medium tracking-wider uppercase text-gray-400 hover:text-gray-900 transition-colors">Home</a>
+                <a href="#products" class="text-xs font-medium tracking-wider uppercase text-gray-400 hover:text-gray-900 transition-colors">Shop</a>
+                <a href="#about" class="text-xs font-medium tracking-wider uppercase text-gray-400 hover:text-gray-900 transition-colors">About</a>
             </div>
             <div class="flex items-center gap-3">
-                <button onclick="toggleSearch()" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors">
-                    <span class="iconify text-neutral-400" data-icon="mdi:magnify" data-width="18"></span>
+                <button onclick="toggleSearch()" class="w-10 h-10 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-300 hover:bg-brand-50 transition-all">
+                    <span class="iconify text-gray-400" data-icon="mdi:magnify" data-width="18"></span>
                 </button>
-                <button onclick="toggleCart()" class="relative w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors">
-                    <span class="iconify text-neutral-400" data-icon="mdi:shopping-outline" data-width="18"></span>
-                    <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-brand-red text-white text-[10px] font-bold rounded-full flex items-center justify-center hidden">0</span>
+                <button onclick="toggleCart()" class="relative w-10 h-10 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-300 hover:bg-brand-50 transition-all">
+                    <span class="iconify text-gray-400" data-icon="mdi:shopping-outline" data-width="18"></span>
+                    <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-brand-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center hidden">0</span>
                 </button>
-                <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors">
-                    <span id="menuIcon" class="iconify text-neutral-400" data-icon="mdi:menu" data-width="18"></span>
+                <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-300 transition-all">
+                    <span id="menuIcon" class="iconify text-gray-400" data-icon="mdi:menu" data-width="18"></span>
                 </button>
             </div>
         </div>
-        <!-- Search Bar -->
-        <div id="searchBar" class="hidden border-t border-white/5 bg-surface-1">
+        <div id="searchBar" class="hidden border-t border-surface-200 bg-white">
             <div class="max-w-7xl mx-auto px-4 py-3">
                 <div class="relative">
-                    <span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500" data-icon="mdi:magnify" data-width="18"></span>
+                    <span class="iconify absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" data-icon="mdi:magnify" data-width="18"></span>
                     <input id="searchInput" type="text" placeholder="Search products..."
-                        class="w-full bg-surface-2 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder:text-neutral-500"
+                        class="w-full bg-surface-100 border border-surface-300 rounded-xl pl-11 pr-4 py-3 text-sm text-gray-900 placeholder:text-gray-400"
                         oninput="applyFilters()">
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-white/5 bg-surface-1">
+        <div id="mobileMenu" class="hidden md:hidden border-t border-surface-200 bg-white">
             <div class="px-4 py-4 flex flex-col gap-3">
-                <a href="#" onclick="goHome();toggleMobileMenu()" class="text-sm text-neutral-300 hover:text-white py-2">Home</a>
-                <a href="#products" onclick="toggleMobileMenu()" class="text-sm text-neutral-300 hover:text-white py-2">Shop</a>
-                <a href="#about" onclick="toggleMobileMenu()" class="text-sm text-neutral-300 hover:text-white py-2">About</a>
-                <div class="border-t border-white/5 pt-3 mt-1">
-                    <button onclick="toggleMobileMenu();showAdmin()" class="text-xs text-neutral-600 hover:text-neutral-400">Admin Panel</button>
+                <a href="#" onclick="goHome();toggleMobileMenu()" class="text-sm text-gray-500 hover:text-gray-900 py-2">Home</a>
+                <a href="#products" onclick="toggleMobileMenu()" class="text-sm text-gray-500 hover:text-gray-900 py-2">Shop</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="text-sm text-gray-500 hover:text-gray-900 py-2">About</a>
+                <div class="border-t border-surface-200 pt-3 mt-1">
+                    <button onclick="toggleMobileMenu();showAdmin()" class="text-xs text-gray-300 hover:text-gray-500">Admin Panel</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden stripe-bg">
+    <!-- HERO -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="hero-glow"></div>
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=1080&fit=crop&q=80" alt="Fashion Store" class="w-full h-full object-cover opacity-20">
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-transparent to-brand-dark"></div>
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=1080&fit=crop&q=80" alt="Fashion Store" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80"></div>
         </div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-16 text-center">
-            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8">
-                <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
-                <span class="text-xs font-medium tracking-wider uppercase text-neutral-300">New Collection 2025</span>
+            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-200 bg-brand-50 mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span class="text-xs font-medium tracking-wider uppercase text-brand-600">New Collection 2025</span>
             </div>
             <h1 class="reveal delay-100 text-5xl md:text-8xl font-bold tracking-tighter leading-[0.95] mb-6">
                 <span class="text-gradient">Your Style</span><br>
-                <span class="text-brand-red">Your Mart</span>
+                <span class="text-gradient-brand">Your Mart</span>
             </h1>
-            <p class="reveal delay-200 text-neutral-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+            <p class="reveal delay-200 text-gray-500 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                 Discover trending fashion for boys & girls. Clothing, shoes, jewelry & watches — all at unbeatable prices.
             </p>
             <div class="reveal delay-300 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -202,133 +179,122 @@
                     Shop Now <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span>
                 </a>
                 <a href="https://wa.me/923372626303?text=Hi%20KHAN.MART!" target="_blank"
-                    class="px-8 py-3.5 rounded-xl text-xs font-semibold tracking-wider uppercase border border-white/10 hover:border-white/30 transition-colors flex items-center gap-2">
+                    class="px-8 py-3.5 rounded-xl text-xs font-semibold tracking-wider uppercase border border-surface-300 text-gray-700 hover:border-green-400 hover:bg-green-50 hover:text-green-700 transition-all flex items-center gap-2">
                     <span class="iconify text-green-500" data-icon="mdi:whatsapp" data-width="18"></span> Chat on WhatsApp
                 </a>
             </div>
             <div class="reveal delay-400 mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto">
-                <div><div class="text-2xl font-bold">500+</div><div class="text-xs text-neutral-500 mt-1">Products</div></div>
-                <div><div class="text-2xl font-bold">1K+</div><div class="text-xs text-neutral-500 mt-1">Happy Customers</div></div>
-                <div><div class="text-2xl font-bold">4.8★</div><div class="text-xs text-neutral-500 mt-1">Rating</div></div>
+                <div><div class="text-2xl font-bold text-gray-900">500+</div><div class="text-xs text-gray-400 mt-1">Products</div></div>
+                <div><div class="text-2xl font-bold text-gray-900">1K+</div><div class="text-xs text-gray-400 mt-1">Happy Customers</div></div>
+                <div><div class="text-2xl font-bold text-gray-900">4.8★</div><div class="text-xs text-gray-400 mt-1">Rating</div></div>
             </div>
         </div>
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <span class="iconify text-neutral-600" data-icon="mdi:chevron-down" data-width="24"></span>
+            <span class="iconify text-gray-300" data-icon="mdi:chevron-down" data-width="24"></span>
         </div>
     </section>
 
     <!-- MARQUEE -->
-    <div class="border-y border-white/5 bg-surface-1 py-3 overflow-hidden">
+    <div class="border-y border-surface-200 bg-brand-50 py-3 overflow-hidden">
         <div class="flex animate-marquee whitespace-nowrap">
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">Free Delivery on Orders Above Rs. 2,000</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">Cash on Delivery Available</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">EasyPaisa & JazzCash Accepted</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">Order via WhatsApp</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">Free Delivery on Orders Above Rs. 2,000</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">Cash on Delivery Available</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">EasyPaisa & JazzCash Accepted</span>
-            <span class="text-brand-red mx-4">✦</span>
-            <span class="text-xs font-medium tracking-[0.3em] uppercase text-neutral-600 mx-8">Order via WhatsApp</span>
-            <span class="text-brand-red mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">Free Delivery on Orders Above Rs. 2,000</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">Cash on Delivery Available</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">EasyPaisa & JazzCash Accepted</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">Order via WhatsApp</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">Free Delivery on Orders Above Rs. 2,000</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">Cash on Delivery Available</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">EasyPaisa & JazzCash Accepted</span>
+            <span class="text-brand-300 mx-4">✦</span>
+            <span class="text-xs font-medium tracking-[0.3em] uppercase text-brand-400 mx-8">Order via WhatsApp</span>
+            <span class="text-brand-300 mx-4">✦</span>
         </div>
     </div>
 
-    <!-- ===== PRODUCTS SECTION ===== -->
-    <section id="products" class="py-20 md:py-28 bg-surface-1 stripe-bg min-h-screen">
+    <!-- PRODUCTS -->
+    <section id="products" class="py-20 md:py-28 bg-surface-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4">
-
-            <!-- Section Header -->
             <div class="text-center mb-10">
-                <span class="reveal text-xs font-mono tracking-widest uppercase text-brand-red">Collection</span>
+                <span class="reveal text-xs font-mono tracking-widest uppercase text-brand-500">Collection</span>
                 <h2 class="reveal delay-100 text-3xl md:text-5xl font-semibold tracking-tight mt-3 text-gradient">Products</h2>
             </div>
 
             <!-- Filter Bar -->
-            <div class="reveal delay-200 mb-6">
-                <!-- Top Bar: Filter toggle + Sort + Active tags + Count -->
+            <div class="reveal delay-200 mb-8">
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
                     <div class="flex items-center gap-3">
-                        <button onclick="toggleFilterPanel()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-surface-2 hover:border-white/25 transition-all text-xs font-medium">
-                            <span class="iconify text-neutral-400" data-icon="mdi:filter-variant" data-width="16"></span>
-                            <span class="text-neutral-300">Filters</span>
-                            <span id="activeFilterBadge" class="hidden w-5 h-5 rounded-full bg-brand-red text-[10px] font-bold flex items-center justify-center">0</span>
+                        <button onclick="toggleFilterPanel()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-surface-300 bg-white hover:border-brand-300 hover:bg-brand-50 transition-all text-xs font-medium card-shadow">
+                            <span class="iconify text-gray-400" data-icon="mdi:filter-variant" data-width="16"></span>
+                            <span class="text-gray-600">Filters</span>
+                            <span id="activeFilterBadge" class="hidden w-5 h-5 rounded-full bg-brand-500 text-[10px] font-bold flex items-center justify-center text-white">0</span>
                         </button>
-                        <!-- Active filter tags -->
                         <div id="activeFilterTags" class="flex flex-wrap items-center gap-2"></div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span id="productCount" class="text-xs text-neutral-500">Showing 0 products</span>
-                        <!-- Sort Dropdown -->
+                        <span id="productCount" class="text-xs text-gray-400">Showing 0 products</span>
                         <div class="relative">
-                            <button onclick="toggleSortMenu()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-surface-2 hover:border-white/25 transition-all text-xs font-medium text-neutral-300">
-                                <span class="iconify text-neutral-400" data-icon="mdi:sort" data-width="16"></span>
+                            <button onclick="toggleSortMenu()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-surface-300 bg-white hover:border-brand-300 hover:bg-brand-50 transition-all text-xs font-medium text-gray-600 card-shadow">
+                                <span class="iconify text-gray-400" data-icon="mdi:sort" data-width="16"></span>
                                 <span id="sortLabel">Newest</span>
-                                <span class="iconify text-neutral-500" data-icon="mdi:chevron-down" data-width="14"></span>
+                                <span class="iconify text-gray-300" data-icon="mdi:chevron-down" data-width="14"></span>
                             </button>
-                            <div id="sortMenu" class="sort-menu hidden absolute right-0 top-full mt-2 w-52 bg-surface-3 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-30">
-                                <button onclick="setSort('newest')" class="sort-option w-full text-left px-4 py-3 text-xs text-neutral-300 hover:bg-white/5 transition-colors flex items-center justify-between" data-sort="newest">
-                                    <span>Newest</span><span class="iconify text-brand-red sort-check" data-icon="mdi:check" data-width="14"></span>
+                            <div id="sortMenu" class="hidden absolute right-0 top-full mt-2 w-52 bg-white border border-surface-300 rounded-xl overflow-hidden shadow-lg z-30">
+                                <button onclick="setSort('newest')" class="sort-option w-full text-left px-4 py-3 text-xs text-gray-600 hover:bg-brand-50 transition-colors flex items-center justify-between" data-sort="newest">
+                                    <span>Newest</span><span class="iconify text-brand-500 sort-check" data-icon="mdi:check" data-width="14"></span>
                                 </button>
-                                <button onclick="setSort('price-low')" class="sort-option w-full text-left px-4 py-3 text-xs text-neutral-300 hover:bg-white/5 transition-colors flex items-center justify-between" data-sort="price-low">
-                                    <span>Price: Low to High</span><span class="iconify text-brand-red sort-check hidden" data-icon="mdi:check" data-width="14"></span>
+                                <button onclick="setSort('price-low')" class="sort-option w-full text-left px-4 py-3 text-xs text-gray-600 hover:bg-brand-50 transition-colors flex items-center justify-between" data-sort="price-low">
+                                    <span>Price: Low to High</span><span class="iconify text-brand-500 sort-check hidden" data-icon="mdi:check" data-width="14"></span>
                                 </button>
-                                <button onclick="setSort('price-high')" class="sort-option w-full text-left px-4 py-3 text-xs text-neutral-300 hover:bg-white/5 transition-colors flex items-center justify-between" data-sort="price-high">
-                                    <span>Price: High to Low</span><span class="iconify text-brand-red sort-check hidden" data-icon="mdi:check" data-width="14"></span>
+                                <button onclick="setSort('price-high')" class="sort-option w-full text-left px-4 py-3 text-xs text-gray-600 hover:bg-brand-50 transition-colors flex items-center justify-between" data-sort="price-high">
+                                    <span>Price: High to Low</span><span class="iconify text-brand-500 sort-check hidden" data-icon="mdi:check" data-width="14"></span>
                                 </button>
-                                <button onclick="setSort('name')" class="sort-option w-full text-left px-4 py-3 text-xs text-neutral-300 hover:bg-white/5 transition-colors flex items-center justify-between" data-sort="name">
-                                    <span>Name: A to Z</span><span class="iconify text-brand-red sort-check hidden" data-icon="mdi:check" data-width="14"></span>
+                                <button onclick="setSort('name')" class="sort-option w-full text-left px-4 py-3 text-xs text-gray-600 hover:bg-brand-50 transition-colors flex items-center justify-between" data-sort="name">
+                                    <span>Name: A to Z</span><span class="iconify text-brand-500 sort-check hidden" data-icon="mdi:check" data-width="14"></span>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Expandable Filter Panel -->
                 <div id="filterPanel" class="filter-panel">
-                    <div class="p-5 rounded-2xl border border-white/5 bg-surface-2">
+                    <div class="p-5 rounded-2xl border border-surface-300 bg-white card-shadow">
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                            <!-- Gender -->
                             <div>
-                                <label class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 block mb-2">Gender</label>
-                                <select id="filterGender" onchange="applyFilters()" class="filter-select w-full bg-surface-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-neutral-300 cursor-pointer">
+                                <label class="text-[10px] font-semibold tracking-widest uppercase text-gray-400 block mb-2">Gender</label>
+                                <select id="filterGender" onchange="applyFilters()" class="filter-select w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-2.5 text-sm text-gray-700 cursor-pointer">
                                     <option value="all">All</option>
                                     <option value="boys">Boys</option>
                                     <option value="girls">Girls</option>
                                 </select>
                             </div>
-                            <!-- Category -->
                             <div>
-                                <label class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 block mb-2">Category</label>
-                                <select id="filterCategory" onchange="applyFilters()" class="filter-select w-full bg-surface-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-neutral-300 cursor-pointer">
+                                <label class="text-[10px] font-semibold tracking-widest uppercase text-gray-400 block mb-2">Category</label>
+                                <select id="filterCategory" onchange="applyFilters()" class="filter-select w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-2.5 text-sm text-gray-700 cursor-pointer">
                                     <option value="all">All Categories</option>
                                 </select>
                             </div>
-                            <!-- Price Range -->
                             <div>
-                                <label class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 block mb-2">Price Range (Rs.)</label>
+                                <label class="text-[10px] font-semibold tracking-widest uppercase text-gray-400 block mb-2">Price Range (Rs.)</label>
                                 <div class="flex items-center gap-2">
-                                    <input type="number" id="filterPriceMin" placeholder="Min" min="0" oninput="applyFilters()" class="w-full bg-surface-3 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-neutral-300 placeholder:text-neutral-600">
-                                    <span class="text-neutral-600 text-xs">—</span>
-                                    <input type="number" id="filterPriceMax" placeholder="Max" min="0" oninput="applyFilters()" class="w-full bg-surface-3 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-neutral-300 placeholder:text-neutral-600">
+                                    <input type="number" id="filterPriceMin" placeholder="Min" min="0" oninput="applyFilters()" class="w-full bg-surface-50 border border-surface-300 rounded-xl px-3 py-2.5 text-sm text-gray-700 placeholder:text-gray-300">
+                                    <span class="text-gray-300 text-xs">—</span>
+                                    <input type="number" id="filterPriceMax" placeholder="Max" min="0" oninput="applyFilters()" class="w-full bg-surface-50 border border-surface-300 rounded-xl px-3 py-2.5 text-sm text-gray-700 placeholder:text-gray-300">
                                 </div>
                             </div>
-                            <!-- Size -->
                             <div>
-                                <label class="text-[10px] font-semibold tracking-widest uppercase text-neutral-500 block mb-2">Size</label>
-                                <select id="filterSize" onchange="applyFilters()" class="filter-select w-full bg-surface-3 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-neutral-300 cursor-pointer">
+                                <label class="text-[10px] font-semibold tracking-widest uppercase text-gray-400 block mb-2">Size</label>
+                                <select id="filterSize" onchange="applyFilters()" class="filter-select w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-2.5 text-sm text-gray-700 cursor-pointer">
                                     <option value="all">All Sizes</option>
                                 </select>
                             </div>
                         </div>
-                        <!-- Reset -->
-                        <div class="flex justify-end mt-4 pt-4 border-t border-white/5">
-                            <button onclick="resetFilters()" class="flex items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-white transition-colors">
+                        <div class="flex justify-end mt-4 pt-4 border-t border-surface-200">
+                            <button onclick="resetFilters()" class="flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-brand-600 transition-colors">
                                 <span class="iconify" data-icon="mdi:refresh" data-width="14"></span> Reset Filters
                             </button>
                         </div>
@@ -336,41 +302,38 @@
                 </div>
             </div>
 
-            <!-- Product Grid -->
             <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
 
-            <!-- Empty State -->
             <div id="emptyState" class="hidden">
                 <div class="text-center py-20">
-                    <div class="w-20 h-20 rounded-full bg-surface-2 border border-white/5 flex items-center justify-center mx-auto mb-6">
-                        <span class="iconify text-neutral-600" data-icon="mdi:package-variant-remove" data-width="36"></span>
+                    <div class="w-20 h-20 rounded-full bg-surface-100 border border-surface-300 flex items-center justify-center mx-auto mb-6">
+                        <span class="iconify text-gray-300" data-icon="mdi:package-variant-remove" data-width="36"></span>
                     </div>
-                    <h3 class="text-lg font-semibold text-neutral-300 mb-2">No products found</h3>
-                    <p class="text-sm text-neutral-500 mb-6">Try adjusting your filters</p>
-                    <button onclick="resetFilters()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-brand-red/40 text-brand-red text-xs font-semibold tracking-wider uppercase hover:bg-brand-red/10 transition-colors">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">No products found</h3>
+                    <p class="text-sm text-gray-400 mb-6">Try adjusting your filters</p>
+                    <button onclick="resetFilters()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-brand-300 text-brand-600 text-xs font-semibold tracking-wider uppercase hover:bg-brand-50 transition-colors">
                         <span class="iconify" data-icon="mdi:refresh" data-width="14"></span> Reset Filters
                     </button>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- OFFER BANNER -->
-    <section class="py-20 md:py-28 relative overflow-hidden">
+    <section class="py-20 md:py-28 relative overflow-hidden bg-white">
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1920&h=600&fit=crop&q=80" alt="" class="w-full h-full object-cover opacity-15">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-brand-dark"></div>
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1920&h=600&fit=crop&q=80" alt="" class="w-full h-full object-cover opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white"></div>
         </div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
-            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-red/30 bg-brand-red/10 mb-6">
-                <span class="iconify text-brand-red" data-icon="mdi:fire" data-width="14"></span>
-                <span class="text-xs font-semibold tracking-wider uppercase text-brand-red">Limited Time Offer</span>
+            <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-200 bg-brand-50 mb-6">
+                <span class="iconify text-brand-500" data-icon="mdi:fire" data-width="14"></span>
+                <span class="text-xs font-semibold tracking-wider uppercase text-brand-600">Limited Time Offer</span>
             </div>
-            <h2 class="reveal delay-100 text-4xl md:text-6xl font-bold tracking-tighter">
-                Flat <span class="text-brand-red">30% OFF</span><br>on First Order
+            <h2 class="reveal delay-100 text-4xl md:text-6xl font-bold tracking-tighter text-gray-900">
+                Flat <span class="text-gradient-brand">30% OFF</span><br>on First Order
             </h2>
-            <p class="reveal delay-200 text-neutral-400 mt-4 max-w-md mx-auto">Use code <span class="text-white font-semibold bg-white/10 px-3 py-1 rounded-md text-sm">KHAN30</span> at checkout</p>
+            <p class="reveal delay-200 text-gray-500 mt-4 max-w-md mx-auto">Use code <span class="text-gray-900 font-semibold bg-surface-100 px-3 py-1 rounded-md text-sm border border-surface-300">KHAN30</span> at checkout</p>
             <a href="#products" class="reveal delay-300 btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-xs font-semibold tracking-wider uppercase mt-8">
                 Grab the Deal <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span>
             </a>
@@ -378,83 +341,83 @@
     </section>
 
     <!-- WHY US -->
-    <section id="about" class="py-20 md:py-28 bg-surface-1">
+    <section id="about" class="py-20 md:py-28 bg-surface-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-14">
-                <span class="reveal text-xs font-mono tracking-widest uppercase text-brand-red">Why Choose Us</span>
+                <span class="reveal text-xs font-mono tracking-widest uppercase text-brand-500">Why Choose Us</span>
                 <h2 class="reveal delay-100 text-3xl md:text-5xl font-semibold tracking-tight mt-3 text-gradient">The KHAN.MART Promise</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="reveal delay-100 p-8 rounded-2xl border border-white/5 bg-surface-2 hover:border-white/10 transition-colors group">
-                    <div class="w-12 h-12 rounded-xl bg-brand-red/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-red" data-icon="mdi:truck-delivery-outline" data-width="24"></span></div>
-                    <h3 class="font-semibold text-lg mb-2">Fast Delivery</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Quick delivery across Pakistan. Free shipping on orders above Rs. 2,000.</p>
+                <div class="reveal delay-100 p-8 rounded-2xl border border-surface-300 bg-white card-shadow card-shadow-hover transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-500" data-icon="mdi:truck-delivery-outline" data-width="24"></span></div>
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900">Fast Delivery</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Quick delivery across Pakistan. Free shipping on orders above Rs. 2,000.</p>
                 </div>
-                <div class="reveal delay-200 p-8 rounded-2xl border border-white/5 bg-surface-2 hover:border-white/10 transition-colors group">
-                    <div class="w-12 h-12 rounded-xl bg-brand-red/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-red" data-icon="mdi:shield-check-outline" data-width="24"></span></div>
-                    <h3 class="font-semibold text-lg mb-2">Quality Guaranteed</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Every product is checked for quality. Not satisfied? Easy return policy.</p>
+                <div class="reveal delay-200 p-8 rounded-2xl border border-surface-300 bg-white card-shadow card-shadow-hover transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-500" data-icon="mdi:shield-check-outline" data-width="24"></span></div>
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900">Quality Guaranteed</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Every product is checked for quality. Not satisfied? Easy return policy.</p>
                 </div>
-                <div class="reveal delay-300 p-8 rounded-2xl border border-white/5 bg-surface-2 hover:border-white/10 transition-colors group">
-                    <div class="w-12 h-12 rounded-xl bg-brand-red/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-red" data-icon="mdi:cash-multiple" data-width="24"></span></div>
-                    <h3 class="font-semibold text-lg mb-2">COD Available</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Cash on Delivery, EasyPaisa, JazzCash — pay however you like.</p>
+                <div class="reveal delay-300 p-8 rounded-2xl border border-surface-300 bg-white card-shadow card-shadow-hover transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-500" data-icon="mdi:cash-multiple" data-width="24"></span></div>
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900">COD Available</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Cash on Delivery, EasyPaisa, JazzCash — pay however you like.</p>
                 </div>
-                <div class="reveal delay-400 p-8 rounded-2xl border border-white/5 bg-surface-2 hover:border-white/10 transition-colors group">
-                    <div class="w-12 h-12 rounded-xl bg-brand-red/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-brand-red" data-icon="mdi:whatsapp" data-width="24"></span></div>
-                    <h3 class="font-semibold text-lg mb-2">WhatsApp Support</h3>
-                    <p class="text-sm text-neutral-400 leading-relaxed">Order directly via WhatsApp. Quick response, personal assistance.</p>
+                <div class="reveal delay-400 p-8 rounded-2xl border border-surface-300 bg-white card-shadow card-shadow-hover transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><span class="iconify text-green-500" data-icon="mdi:whatsapp" data-width="24"></span></div>
+                    <h3 class="font-semibold text-lg mb-2 text-gray-900">WhatsApp Support</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Order directly via WhatsApp. Quick response, personal assistance.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="border-t border-white/5 bg-brand-dark py-16">
+    <footer class="border-t border-surface-200 bg-white py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center"><span class="text-white font-bold text-sm">K</span></div>
-                        <span class="font-bold text-lg tracking-tight">KHAN<span class="text-brand-red">.</span>MART</span>
+                        <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center"><span class="text-white font-bold text-sm">K</span></div>
+                        <span class="font-bold text-lg tracking-tight text-gray-900">KHAN<span class="text-brand-500">.</span>MART</span>
                     </div>
-                    <p class="text-sm text-neutral-500 leading-relaxed mb-4">Your one-stop fashion destination.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">Your one-stop fashion destination.</p>
                     <div class="flex gap-3">
-                        <a href="#" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-red hover:text-brand-red text-neutral-500 transition-all"><span class="iconify" data-icon="mdi:instagram" data-width="16"></span></a>
-                        <a href="#" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-red hover:text-brand-red text-neutral-500 transition-all"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a>
-                        <a href="https://wa.me/923372626303" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-green-500 hover:text-green-500 text-neutral-500 transition-all"><span class="iconify" data-icon="mdi:whatsapp" data-width="16"></span></a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-400 hover:bg-brand-50 hover:text-brand-500 text-gray-400 transition-all"><span class="iconify" data-icon="mdi:instagram" data-width="16"></span></a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-400 hover:bg-brand-50 hover:text-brand-500 text-gray-400 transition-all"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a>
+                        <a href="https://wa.me/923372626303" target="_blank" class="w-9 h-9 rounded-full border border-surface-300 flex items-center justify-center hover:border-green-400 hover:bg-green-50 hover:text-green-500 text-gray-400 transition-all"><span class="iconify" data-icon="mdi:whatsapp" data-width="16"></span></a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-xs font-semibold tracking-widest uppercase text-neutral-300 mb-4">Quick Links</h4>
+                    <h4 class="text-xs font-semibold tracking-widest uppercase text-gray-900 mb-4">Quick Links</h4>
                     <ul class="space-y-2.5">
-                        <li><a href="#products" class="text-sm text-neutral-500 hover:text-white transition-colors">Shop All</a></li>
-                        <li><a href="#about" class="text-sm text-neutral-500 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors">Size Guide</a></li>
-                        <li><a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#products" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Shop All</a></li>
+                        <li><a href="#about" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Size Guide</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-semibold tracking-widest uppercase text-neutral-300 mb-4">Policies</h4>
+                    <h4 class="text-xs font-semibold tracking-widest uppercase text-gray-900 mb-4">Policies</h4>
                     <ul class="space-y-2.5">
-                        <li><a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors">Shipping Info</a></li>
-                        <li><a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors">Return Policy</a></li>
-                        <li><a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-sm text-neutral-500 hover:text-white transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">Terms & Conditions</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xs font-semibold tracking-widest uppercase text-neutral-300 mb-4">Contact</h4>
+                    <h4 class="text-xs font-semibold tracking-widest uppercase text-gray-900 mb-4">Contact</h4>
                     <ul class="space-y-3">
-                        <li class="flex items-start gap-2.5"><span class="iconify text-neutral-500 mt-0.5" data-icon="mdi:whatsapp" data-width="16"></span><a href="https://wa.me/923372626303" target="_blank" class="text-sm text-neutral-500 hover:text-white transition-colors">0337 2626303</a></li>
-                        <li class="flex items-start gap-2.5"><span class="iconify text-neutral-500 mt-0.5" data-icon="mdi:email-outline" data-width="16"></span><span class="text-sm text-neutral-500">info@khanmart.com</span></li>
-                        <li class="flex items-start gap-2.5"><span class="iconify text-neutral-500 mt-0.5" data-icon="mdi:map-marker-outline" data-width="16"></span><span class="text-sm text-neutral-500">Pakistan</span></li>
+                        <li class="flex items-start gap-2.5"><span class="iconify text-green-500 mt-0.5" data-icon="mdi:whatsapp" data-width="16"></span><a href="https://wa.me/923372626303" target="_blank" class="text-sm text-gray-400 hover:text-brand-600 transition-colors">0337 2626303</a></li>
+                        <li class="flex items-start gap-2.5"><span class="iconify text-gray-300 mt-0.5" data-icon="mdi:email-outline" data-width="16"></span><span class="text-sm text-gray-400">info@khanmart.com</span></li>
+                        <li class="flex items-start gap-2.5"><span class="iconify text-gray-300 mt-0.5" data-icon="mdi:map-marker-outline" data-width="16"></span><span class="text-sm text-gray-400">Pakistan</span></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-xs text-neutral-600">© 2025 KHAN.MART. All rights reserved.</p>
-                <div class="flex items-center gap-3 text-xs text-neutral-600"><span>COD</span><span>•</span><span>EasyPaisa</span><span>•</span><span>JazzCash</span><span>•</span><span>Bank Transfer</span></div>
+            <div class="border-t border-surface-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-gray-300">© 2025 KHAN.MART. All rights reserved.</p>
+                <div class="flex items-center gap-3 text-xs text-gray-300"><span>COD</span><span>•</span><span>EasyPaisa</span><span>•</span><span>JazzCash</span><span>•</span><span>Bank Transfer</span></div>
             </div>
         </div>
     </footer>
@@ -462,57 +425,57 @@
     <!-- WHATSAPP FLOAT -->
     <a href="https://wa.me/923372626303?text=Hi%20KHAN.MART!" target="_blank"
         class="whatsapp-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
-        style="box-shadow: 0 0 20px rgba(37,211,102,0.4);">
+        style="box-shadow: 0 4px 20px rgba(34,197,94,0.4);">
         <span class="iconify text-white" data-icon="mdi:whatsapp" data-width="28"></span>
     </a>
 
     <!-- CART SIDEBAR -->
     <div id="cartOverlay" class="fixed inset-0 z-[150] hidden">
-        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="toggleCart()"></div>
-        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-surface-1 border-l border-white/10 flex flex-col animate-slide-in-right">
-            <div class="flex items-center justify-between p-6 border-b border-white/5">
-                <h3 class="font-semibold text-lg flex items-center gap-2"><span class="iconify text-brand-red" data-icon="mdi:shopping-outline" data-width="20"></span>Your Cart (<span id="cartItemCount">0</span>)</h3>
-                <button onclick="toggleCart()" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors"><span class="iconify text-neutral-400" data-icon="mdi:close" data-width="16"></span></button>
+        <div class="absolute inset-0 bg-black/20 modal-overlay" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white border-l border-surface-200 flex flex-col animate-slide-in-right shadow-2xl">
+            <div class="flex items-center justify-between p-6 border-b border-surface-200">
+                <h3 class="font-semibold text-lg flex items-center gap-2 text-gray-900"><span class="iconify text-brand-500" data-icon="mdi:shopping-outline" data-width="20"></span>Your Cart (<span id="cartItemCount">0</span>)</h3>
+                <button onclick="toggleCart()" class="w-8 h-8 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-300 hover:bg-brand-50 transition-all"><span class="iconify text-gray-400" data-icon="mdi:close" data-width="16"></span></button>
             </div>
             <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
             <div id="cartEmpty" class="flex-1 flex flex-col items-center justify-center p-6">
-                <span class="iconify text-neutral-600" data-icon="mdi:cart-outline" data-width="48"></span>
-                <p class="text-neutral-500 mt-3 text-sm">Your cart is empty</p>
-                <button onclick="toggleCart()" class="text-brand-red text-sm mt-2 hover:underline">Continue Shopping</button>
+                <span class="iconify text-gray-200" data-icon="mdi:cart-outline" data-width="48"></span>
+                <p class="text-gray-400 mt-3 text-sm">Your cart is empty</p>
+                <button onclick="toggleCart()" class="text-brand-600 text-sm mt-2 hover:underline">Continue Shopping</button>
             </div>
-            <div id="cartFooter" class="hidden border-t border-white/5 p-6 space-y-4">
-                <div class="flex items-center justify-between"><span class="text-sm text-neutral-400">Subtotal</span><span id="cartTotal" class="font-semibold text-lg">Rs. 0</span></div>
+            <div id="cartFooter" class="hidden border-t border-surface-200 p-6 space-y-4">
+                <div class="flex items-center justify-between"><span class="text-sm text-gray-400">Subtotal</span><span id="cartTotal" class="font-semibold text-lg text-gray-900">Rs. 0</span></div>
                 <button onclick="openCheckout()" class="btn-primary w-full py-3.5 rounded-xl text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2">Proceed to Checkout <span class="iconify" data-icon="mdi:arrow-right" data-width="16"></span></button>
-                <button onclick="orderViaWhatsApp()" class="w-full py-3 rounded-xl text-xs font-semibold tracking-wider uppercase border border-green-500/30 text-green-500 hover:bg-green-500/10 transition-colors flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:whatsapp" data-width="16"></span> Order via WhatsApp</button>
+                <button onclick="orderViaWhatsApp()" class="w-full py-3 rounded-xl text-xs font-semibold tracking-wider uppercase border border-green-300 text-green-600 hover:bg-green-50 transition-colors flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:whatsapp" data-width="16"></span> Order via WhatsApp</button>
             </div>
         </div>
     </div>
 
-    <!-- PRODUCT DETAIL MODAL -->
+    <!-- PRODUCT MODAL -->
     <div id="productModal" class="fixed inset-0 z-[140] hidden">
-        <div class="absolute inset-0 bg-black/70 modal-overlay" onclick="closeProductModal()"></div>
-        <div class="absolute inset-4 md:inset-10 lg:inset-20 bg-surface-1 rounded-2xl border border-white/10 overflow-hidden flex flex-col md:flex-row animate-fade-in">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors"><span class="iconify text-neutral-400" data-icon="mdi:close" data-width="16"></span></button>
-            <div class="md:w-1/2 bg-surface-2 flex items-center justify-center p-8"><img id="modalImage" src="" alt="" class="max-w-full max-h-[60vh] md:max-h-[80vh] object-contain rounded-lg"></div>
+        <div class="absolute inset-0 bg-black/30 modal-overlay" onclick="closeProductModal()"></div>
+        <div class="absolute inset-4 md:inset-10 lg:inset-20 bg-white rounded-2xl border border-surface-300 overflow-hidden flex flex-col md:flex-row animate-fade-in shadow-2xl">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/80 border border-surface-300 flex items-center justify-center hover:border-brand-300 transition-all"><span class="iconify text-gray-400" data-icon="mdi:close" data-width="16"></span></button>
+            <div class="md:w-1/2 bg-surface-100 flex items-center justify-center p-8"><img id="modalImage" src="" alt="" class="max-w-full max-h-[60vh] md:max-h-[80vh] object-contain rounded-lg"></div>
             <div class="md:w-1/2 p-8 md:p-10 overflow-y-auto flex flex-col">
-                <span id="modalCategory" class="text-xs font-mono tracking-widest uppercase text-brand-red mb-2"></span>
-                <h2 id="modalName" class="text-2xl md:text-3xl font-bold tracking-tight mb-2"></h2>
+                <span id="modalCategory" class="text-xs font-mono tracking-widest uppercase text-brand-500 mb-2"></span>
+                <h2 id="modalName" class="text-2xl md:text-3xl font-bold tracking-tight mb-2 text-gray-900"></h2>
                 <div class="flex items-center gap-3 mb-4">
-                    <span id="modalPrice" class="text-2xl font-bold text-brand-red"></span>
-                    <span id="modalOldPrice" class="text-lg text-neutral-500 line-through"></span>
+                    <span id="modalPrice" class="text-2xl font-bold text-brand-600"></span>
+                    <span id="modalOldPrice" class="text-lg text-gray-300 line-through"></span>
                 </div>
-                <p id="modalDesc" class="text-sm text-neutral-400 leading-relaxed mb-6"></p>
-                <div class="mb-6"><h4 class="text-xs font-semibold tracking-wider uppercase text-neutral-300 mb-3">Select Size</h4><div id="modalSizes" class="flex flex-wrap gap-2"></div></div>
-                <div class="mb-8"><h4 class="text-xs font-semibold tracking-wider uppercase text-neutral-300 mb-3">Quantity</h4>
+                <p id="modalDesc" class="text-sm text-gray-400 leading-relaxed mb-6"></p>
+                <div class="mb-6"><h4 class="text-xs font-semibold tracking-wider uppercase text-gray-500 mb-3">Select Size</h4><div id="modalSizes" class="flex flex-wrap gap-2"></div></div>
+                <div class="mb-8"><h4 class="text-xs font-semibold tracking-wider uppercase text-gray-500 mb-3">Quantity</h4>
                     <div class="flex items-center gap-3">
-                        <button onclick="changeModalQty(-1)" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors"><span class="iconify" data-icon="mdi:minus" data-width="16"></span></button>
-                        <span id="modalQty" class="text-lg font-semibold w-10 text-center">1</span>
-                        <button onclick="changeModalQty(1)" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors"><span class="iconify" data-icon="mdi:plus" data-width="16"></span></button>
+                        <button onclick="changeModalQty(-1)" class="w-10 h-10 rounded-lg border border-surface-300 flex items-center justify-center hover:border-brand-300 bg-white transition-all"><span class="iconify text-gray-400" data-icon="mdi:minus" data-width="16"></span></button>
+                        <span id="modalQty" class="text-lg font-semibold w-10 text-center text-gray-900">1</span>
+                        <button onclick="changeModalQty(1)" class="w-10 h-10 rounded-lg border border-surface-300 flex items-center justify-center hover:border-brand-300 bg-white transition-all"><span class="iconify text-gray-400" data-icon="mdi:plus" data-width="16"></span></button>
                     </div>
                 </div>
                 <div class="mt-auto flex flex-col gap-3">
                     <button onclick="addToCartFromModal()" class="btn-primary w-full py-4 rounded-xl text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:cart-plus" data-width="18"></span> Add to Cart</button>
-                    <button onclick="whatsappFromModal()" class="w-full py-3.5 rounded-xl text-xs font-semibold tracking-wider uppercase border border-green-500/30 text-green-500 hover:bg-green-500/10 transition-colors flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:whatsapp" data-width="18"></span> Order on WhatsApp</button>
+                    <button onclick="whatsappFromModal()" class="w-full py-3.5 rounded-xl text-xs font-semibold tracking-wider uppercase border border-green-300 text-green-600 hover:bg-green-50 transition-colors flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:whatsapp" data-width="18"></span> Order on WhatsApp</button>
                 </div>
             </div>
         </div>
@@ -520,25 +483,25 @@
 
     <!-- CHECKOUT MODAL -->
     <div id="checkoutModal" class="fixed inset-0 z-[160] hidden">
-        <div class="absolute inset-0 bg-black/70 modal-overlay" onclick="closeCheckout()"></div>
-        <div class="absolute inset-4 md:inset-10 lg:inset-y-10 lg:left-1/2 lg:-translate-x-1/2 lg:w-full lg:max-w-lg bg-surface-1 rounded-2xl border border-white/10 overflow-y-auto animate-slide-in-up">
-            <div class="flex items-center justify-between p-6 border-b border-white/5 sticky top-0 bg-surface-1 z-10"><h3 class="font-semibold text-lg">Checkout</h3><button onclick="closeCheckout()" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors"><span class="iconify text-neutral-400" data-icon="mdi:close" data-width="16"></span></button></div>
+        <div class="absolute inset-0 bg-black/30 modal-overlay" onclick="closeCheckout()"></div>
+        <div class="absolute inset-4 md:inset-10 lg:inset-y-10 lg:left-1/2 lg:-translate-x-1/2 lg:w-full lg:max-w-lg bg-white rounded-2xl border border-surface-300 overflow-y-auto animate-slide-in-up shadow-2xl">
+            <div class="flex items-center justify-between p-6 border-b border-surface-200 sticky top-0 bg-white z-10"><h3 class="font-semibold text-lg text-gray-900">Checkout</h3><button onclick="closeCheckout()" class="w-8 h-8 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-300 transition-all"><span class="iconify text-gray-400" data-icon="mdi:close" data-width="16"></span></button></div>
             <form id="checkoutForm" onsubmit="submitOrder(event)" class="p-6 space-y-5">
-                <div><label class="text-xs font-semibold tracking-wider uppercase text-neutral-300 block mb-2">Full Name *</label><input type="text" id="coName" required class="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-500" placeholder="Your full name"></div>
-                <div><label class="text-xs font-semibold tracking-wider uppercase text-neutral-300 block mb-2">Phone Number *</label><input type="tel" id="coPhone" required class="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-500" placeholder="03XX XXXXXXX"></div>
-                <div><label class="text-xs font-semibold tracking-wider uppercase text-neutral-300 block mb-2">Address *</label><textarea id="coAddress" required rows="3" class="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-500 resize-none" placeholder="Complete delivery address"></textarea></div>
-                <div><label class="text-xs font-semibold tracking-wider uppercase text-neutral-300 block mb-2">City *</label><input type="text" id="coCity" required class="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-500" placeholder="e.g., Lahore"></div>
-                <div><label class="text-xs font-semibold tracking-wider uppercase text-neutral-300 block mb-2">Payment Method *</label>
+                <div><label class="text-xs font-semibold tracking-wider uppercase text-gray-500 block mb-2">Full Name *</label><input type="text" id="coName" required class="w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-300" placeholder="Your full name"></div>
+                <div><label class="text-xs font-semibold tracking-wider uppercase text-gray-500 block mb-2">Phone Number *</label><input type="tel" id="coPhone" required class="w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-300" placeholder="03XX XXXXXXX"></div>
+                <div><label class="text-xs font-semibold tracking-wider uppercase text-gray-500 block mb-2">Address *</label><textarea id="coAddress" required rows="3" class="w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-300 resize-none" placeholder="Complete delivery address"></textarea></div>
+                <div><label class="text-xs font-semibold tracking-wider uppercase text-gray-500 block mb-2">City *</label><input type="text" id="coCity" required class="w-full bg-surface-50 border border-surface-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-300" placeholder="e.g., Lahore"></div>
+                <div><label class="text-xs font-semibold tracking-wider uppercase text-gray-500 block mb-2">Payment Method *</label>
                     <div class="grid grid-cols-2 gap-3">
-                        <label class="cursor-pointer"><input type="radio" name="payment" value="cod" checked class="hidden peer"><div class="border border-white/10 rounded-xl p-3 text-center peer-checked:border-brand-red peer-checked:bg-brand-red/10 transition-all"><span class="iconify text-neutral-400 mx-auto" data-icon="mdi:cash" data-width="20"></span><p class="text-xs mt-1.5 text-neutral-400">Cash on Delivery</p></div></label>
-                        <label class="cursor-pointer"><input type="radio" name="payment" value="bank" class="hidden peer"><div class="border border-white/10 rounded-xl p-3 text-center peer-checked:border-brand-red peer-checked:bg-brand-red/10 transition-all"><span class="iconify text-neutral-400 mx-auto" data-icon="mdi:bank-transfer" data-width="20"></span><p class="text-xs mt-1.5 text-neutral-400">Bank / E-wallet</p></div></label>
+                        <label class="cursor-pointer"><input type="radio" name="payment" value="cod" checked class="hidden peer"><div class="border border-surface-300 rounded-xl p-3 text-center peer-checked:border-brand-400 peer-checked:bg-brand-50 transition-all bg-white"><span class="iconify text-gray-400 mx-auto" data-icon="mdi:cash" data-width="20"></span><p class="text-xs mt-1.5 text-gray-400">Cash on Delivery</p></div></label>
+                        <label class="cursor-pointer"><input type="radio" name="payment" value="bank" class="hidden peer"><div class="border border-surface-300 rounded-xl p-3 text-center peer-checked:border-brand-400 peer-checked:bg-brand-50 transition-all bg-white"><span class="iconify text-gray-400 mx-auto" data-icon="mdi:bank-transfer" data-width="20"></span><p class="text-xs mt-1.5 text-gray-400">Bank / E-wallet</p></div></label>
                     </div>
                 </div>
-                <div><label class="text-xs font-semibold tracking-wider uppercase text-neutral-300 block mb-2">Coupon Code</label>
-                    <div class="flex gap-2"><input type="text" id="coCoupon" class="flex-1 bg-surface-2 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-500" placeholder="e.g., KHAN30"><button type="button" onclick="applyCoupon()" class="px-5 rounded-xl border border-white/10 text-xs font-semibold tracking-wider uppercase hover:border-white/30 transition-colors">Apply</button></div>
+                <div><label class="text-xs font-semibold tracking-wider uppercase text-gray-500 block mb-2">Coupon Code</label>
+                    <div class="flex gap-2"><input type="text" id="coCoupon" class="flex-1 bg-surface-50 border border-surface-300 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-300" placeholder="e.g., KHAN30"><button type="button" onclick="applyCoupon()" class="px-5 rounded-xl border border-surface-300 text-xs font-semibold tracking-wider uppercase hover:border-brand-300 hover:bg-brand-50 transition-all text-gray-600">Apply</button></div>
                     <p id="couponMsg" class="text-xs mt-2 hidden"></p>
                 </div>
-                <div class="border border-white/5 rounded-xl p-4 bg-surface-2"><h4 class="text-xs font-semibold tracking-wider uppercase text-neutral-300 mb-3">Order Summary</h4><div id="checkoutSummary" class="space-y-2 text-sm"></div><div class="border-t border-white/5 mt-3 pt-3 flex justify-between"><span class="font-semibold">Total</span><span id="checkoutTotal" class="font-bold text-brand-red text-lg">Rs. 0</span></div></div>
+                <div class="border border-surface-200 rounded-xl p-4 bg-surface-50"><h4 class="text-xs font-semibold tracking-wider uppercase text-gray-500 mb-3">Order Summary</h4><div id="checkoutSummary" class="space-y-2 text-sm"></div><div class="border-t border-surface-300 mt-3 pt-3 flex justify-between"><span class="font-semibold text-gray-900">Total</span><span id="checkoutTotal" class="font-bold text-brand-600 text-lg">Rs. 0</span></div></div>
                 <button type="submit" class="btn-primary w-full py-4 rounded-xl text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:check-circle-outline" data-width="18"></span> Place Order</button>
             </form>
         </div>
@@ -546,13 +509,13 @@
 
     <!-- SUCCESS MODAL -->
     <div id="successModal" class="fixed inset-0 z-[170] hidden">
-        <div class="absolute inset-0 bg-black/70 modal-overlay"></div>
+        <div class="absolute inset-0 bg-black/30 modal-overlay"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="bg-surface-1 rounded-2xl border border-white/10 p-10 max-w-sm w-full text-center animate-bounce-in">
-                <div class="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-5"><span class="iconify text-green-500" data-icon="mdi:check-circle" data-width="36"></span></div>
-                <h3 class="text-xl font-bold mb-2">Order Placed!</h3>
-                <p class="text-sm text-neutral-400 mb-6">Thank you for shopping with KHAN.MART.</p>
-                <p id="orderId" class="text-xs text-neutral-500 mb-6">Order ID: #KM-0000</p>
+            <div class="bg-white rounded-2xl border border-surface-300 p-10 max-w-sm w-full text-center animate-bounce-in shadow-2xl">
+                <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5"><span class="iconify text-green-500" data-icon="mdi:check-circle" data-width="36"></span></div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Order Placed!</h3>
+                <p class="text-sm text-gray-400 mb-6">Thank you for shopping with KHAN.MART.</p>
+                <p id="orderId" class="text-xs text-gray-300 mb-6">Order ID: #KM-0000</p>
                 <button onclick="closeSuccess()" class="btn-primary px-8 py-3 rounded-xl text-xs font-semibold tracking-wider uppercase">Continue Shopping</button>
             </div>
         </div>
@@ -560,487 +523,231 @@
 
     <!-- ADMIN PANEL -->
     <div id="adminPanel" class="fixed inset-0 z-[180] hidden">
-        <div class="absolute inset-0 bg-black/80 modal-overlay"></div>
-        <div class="absolute inset-0 md:inset-4 bg-surface-1 rounded-2xl border border-white/10 overflow-hidden flex flex-col animate-fade-in">
-            <div class="flex items-center justify-between p-4 md:p-6 border-b border-white/5 bg-surface-2 flex-wrap gap-2">
-                <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center"><span class="iconify text-white" data-icon="mdi:shield-crown-outline" data-width="16"></span></div><div><h3 class="font-semibold text-sm">Admin Panel</h3><p class="text-[10px] text-neutral-500 font-mono tracking-wider">Dashboard</p></div></div>
+        <div class="absolute inset-0 bg-black/20 modal-overlay"></div>
+        <div class="absolute inset-0 md:inset-4 bg-white rounded-2xl border border-surface-300 overflow-hidden flex flex-col animate-fade-in shadow-2xl">
+            <div class="flex items-center justify-between p-4 md:p-6 border-b border-surface-200 bg-surface-50 flex-wrap gap-2">
+                <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center"><span class="iconify text-white" data-icon="mdi:shield-crown-outline" data-width="16"></span></div><div><h3 class="font-semibold text-sm text-gray-900">Admin Panel</h3><p class="text-[10px] text-gray-400 font-mono tracking-wider">Dashboard</p></div></div>
                 <div class="flex items-center gap-2 flex-wrap">
-                    <button onclick="showAdminTab('dashboard')" class="admin-tab px-4 py-2 rounded-lg text-xs font-medium border border-white/10 hover:border-white/30 transition-all" data-tab="dashboard" style="border-color:#B91C1C;color:#B91C1C">Dashboard</button>
-                    <button onclick="showAdminTab('products')" class="admin-tab px-4 py-2 rounded-lg text-xs font-medium border border-white/10 hover:border-white/30 transition-all" data-tab="products">Products</button>
-                    <button onclick="showAdminTab('orders')" class="admin-tab px-4 py-2 rounded-lg text-xs font-medium border border-white/10 hover:border-white/30 transition-all" data-tab="orders">Orders</button>
-                    <button onclick="closeAdmin()" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors ml-2"><span class="iconify text-neutral-400" data-icon="mdi:close" data-width="16"></span></button>
+                    <button onclick="showAdminTab('dashboard')" class="admin-tab px-4 py-2 rounded-lg text-xs font-medium border border-surface-300 hover:border-brand-300 transition-all bg-white" data-tab="dashboard" style="border-color:#6366F1;color:#6366F1;background:#EEF2FF">Dashboard</button>
+                    <button onclick="showAdminTab('products')" class="admin-tab px-4 py-2 rounded-lg text-xs font-medium border border-surface-300 hover:border-brand-300 transition-all bg-white" data-tab="products">Products</button>
+                    <button onclick="showAdminTab('orders')" class="admin-tab px-4 py-2 rounded-lg text-xs font-medium border border-surface-300 hover:border-brand-300 transition-all bg-white" data-tab="orders">Orders</button>
+                    <button onclick="closeAdmin()" class="w-8 h-8 rounded-full border border-surface-300 flex items-center justify-center hover:border-brand-300 transition-all ml-2 bg-white"><span class="iconify text-gray-400" data-icon="mdi:close" data-width="16"></span></button>
                 </div>
             </div>
             <div class="flex-1 overflow-y-auto p-4 md:p-8">
                 <div id="tab-dashboard" class="admin-tab-content">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div class="p-5 rounded-xl border border-white/5 bg-surface-2"><p class="text-xs text-neutral-500 mb-1">Products</p><p id="adminTotalProducts" class="text-2xl font-bold">0</p></div>
-                        <div class="p-5 rounded-xl border border-white/5 bg-surface-2"><p class="text-xs text-neutral-500 mb-1">Orders</p><p id="adminTotalOrders" class="text-2xl font-bold">0</p></div>
-                        <div class="p-5 rounded-xl border border-white/5 bg-surface-2"><p class="text-xs text-neutral-500 mb-1">Revenue</p><p id="adminRevenue" class="text-2xl font-bold text-green-500">Rs. 0</p></div>
-                        <div class="p-5 rounded-xl border border-white/5 bg-surface-2"><p class="text-xs text-neutral-500 mb-1">Categories</p><p class="text-2xl font-bold">5</p></div>
+                        <div class="p-5 rounded-xl border border-surface-300 bg-white card-shadow"><p class="text-xs text-gray-400 mb-1">Products</p><p id="adminTotalProducts" class="text-2xl font-bold text-gray-900">0</p></div>
+                        <div class="p-5 rounded-xl border border-surface-300 bg-white card-shadow"><p class="text-xs text-gray-400 mb-1">Orders</p><p id="adminTotalOrders" class="text-2xl font-bold text-gray-900">0</p></div>
+                        <div class="p-5 rounded-xl border border-surface-300 bg-white card-shadow"><p class="text-xs text-gray-400 mb-1">Revenue</p><p id="adminRevenue" class="text-2xl font-bold text-green-600">Rs. 0</p></div>
+                        <div class="p-5 rounded-xl border border-surface-300 bg-white card-shadow"><p class="text-xs text-gray-400 mb-1">Categories</p><p class="text-2xl font-bold text-gray-900">5</p></div>
                     </div>
-                    <div class="p-6 rounded-xl border border-white/5 bg-surface-2"><h4 class="text-sm font-semibold mb-4">Recent Orders</h4><div id="adminRecentOrders" class="space-y-3"><p class="text-sm text-neutral-500">No orders yet.</p></div></div>
+                    <div class="p-6 rounded-xl border border-surface-300 bg-white card-shadow"><h4 class="text-sm font-semibold mb-4 text-gray-900">Recent Orders</h4><div id="adminRecentOrders" class="space-y-3"><p class="text-sm text-gray-400">No orders yet.</p></div></div>
                 </div>
                 <div id="tab-products" class="admin-tab-content hidden">
-                    <div class="flex items-center justify-between mb-6"><h4 class="text-sm font-semibold">Products</h4><button onclick="showAddProductForm()" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5"><span class="iconify" data-icon="mdi:plus" data-width="14"></span> Add</button></div>
-                    <div id="addProductForm" class="hidden mb-6 p-6 rounded-xl border border-brand-red/20 bg-surface-2">
+                    <div class="flex items-center justify-between mb-6"><h4 class="text-sm font-semibold text-gray-900">Products</h4><button onclick="showAddProductForm()" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5"><span class="iconify" data-icon="mdi:plus" data-width="14"></span> Add</button></div>
+                    <div id="addProductForm" class="hidden mb-6 p-6 rounded-xl border border-brand-200 bg-brand-50">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" id="apName" placeholder="Product Name" class="bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-neutral-500">
-                            <select id="apCategory" class="bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-neutral-300"><option value="">Category</option><option value="girls-dresses">Girls - Clothing</option><option value="boys-dresses">Boys - Clothing</option><option value="shoes">Shoes</option><option value="jewellery">Jewellery</option><option value="watches">Watches</option></select>
-                            <input type="number" id="apPrice" placeholder="Price" class="bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-neutral-500">
-                            <input type="number" id="apOldPrice" placeholder="Old Price" class="bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-neutral-500">
-                            <select id="apGender" class="bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-neutral-300"><option value="girls">Girls</option><option value="boys">Boys</option><option value="unisex">Unisex</option></select>
-                            <input type="text" id="apSizes" placeholder="Sizes (S,M,L)" class="bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-neutral-500">
-                            <input type="text" id="apImage" placeholder="Image URL" class="md:col-span-2 bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-neutral-500">
-                            <textarea id="apDesc" placeholder="Description" rows="2" class="md:col-span-2 bg-surface-3 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-neutral-500 resize-none"></textarea>
+                            <input type="text" id="apName" placeholder="Product Name" class="bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-300">
+                            <select id="apCategory" class="bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-700"><option value="">Category</option><option value="girls-dresses">Girls - Clothing</option><option value="boys-dresses">Boys - Clothing</option><option value="shoes">Shoes</option><option value="jewellery">Jewellery</option><option value="watches">Watches</option></select>
+                            <input type="number" id="apPrice" placeholder="Price" class="bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-300">
+                            <input type="number" id="apOldPrice" placeholder="Old Price" class="bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-300">
+                            <select id="apGender" class="bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-700"><option value="girls">Girls</option><option value="boys">Boys</option><option value="unisex">Unisex</option></select>
+                            <input type="text" id="apSizes" placeholder="Sizes (S,M,L)" class="bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-300">
+                            <input type="text" id="apImage" placeholder="Image URL" class="md:col-span-2 bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-300">
+                            <textarea id="apDesc" placeholder="Description" rows="2" class="md:col-span-2 bg-white border border-surface-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-300 resize-none"></textarea>
                         </div>
-                        <div class="flex gap-3 mt-4"><button onclick="addNewProduct()" class="btn-primary px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase">Save</button><button onclick="hideAddProductForm()" class="px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase border border-white/10 hover:border-white/30 transition-colors">Cancel</button></div>
+                        <div class="flex gap-3 mt-4"><button onclick="addNewProduct()" class="btn-primary px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase">Save</button><button onclick="hideAddProductForm()" class="px-6 py-2.5 rounded-lg text-xs font-semibold tracking-wider uppercase border border-surface-300 hover:border-brand-300 transition-all text-gray-600">Cancel</button></div>
                     </div>
-                    <div class="rounded-xl border border-white/5 overflow-hidden"><div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-surface-2 border-b border-white/5"><tr><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-neutral-400">Product</th><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-neutral-400">Cat</th><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-neutral-400">Price</th><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-neutral-400">Actions</th></tr></thead><tbody id="adminProductsTable" class="divide-y divide-white/5"></tbody></table></div></div>
+                    <div class="rounded-xl border border-surface-300 overflow-hidden bg-white card-shadow"><div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-surface-50 border-b border-surface-200"><tr><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-gray-400">Product</th><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-gray-400">Cat</th><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-gray-400">Price</th><th class="text-left px-4 py-3 text-xs font-semibold tracking-wider uppercase text-gray-400">Actions</th></tr></thead><tbody id="adminProductsTable" class="divide-y divide-surface-200"></tbody></table></div></div>
                 </div>
-                <div id="tab-orders" class="admin-tab-content hidden"><h4 class="text-sm font-semibold mb-6">Orders</h4><div id="adminOrdersTable" class="space-y-3"><p class="text-sm text-neutral-500">No orders yet.</p></div></div>
+                <div id="tab-orders" class="admin-tab-content hidden"><h4 class="text-sm font-semibold mb-6 text-gray-900">Orders</h4><div id="adminOrdersTable" class="space-y-3"><p class="text-sm text-gray-400">No orders yet.</p></div></div>
             </div>
         </div>
     </div>
 
 
-    <!-- ============ JAVASCRIPT ============ -->
     <script>
     const WHATSAPP = '923372626303';
+    const categoryLabels = { 'girls-dresses':'Girls Clothing','boys-dresses':'Boys Clothing','shoes':'Shoes','jewellery':'Jewellery','watches':'Watches' };
 
-    // Category display names
-    const categoryLabels = {
-        'girls-dresses': 'Girls Clothing',
-        'boys-dresses': 'Boys Clothing',
-        'shoes': 'Shoes',
-        'jewellery': 'Jewellery',
-        'watches': 'Watches'
-    };
-
-    // Products
     let products = [
-        { id:1, name:"Elegant Floral Maxi Dress", category:"girls-dresses", price:2850, oldPrice:3500, gender:"girls", sizes:["S","M","L","XL"],
-          image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop&q=80",
-          desc:"Beautiful floral print maxi dress perfect for parties and casual outings. Premium quality fabric." },
-        { id:2, name:"Casual Cotton Kurti", category:"girls-dresses", price:1200, oldPrice:1800, gender:"girls", sizes:["S","M","L"],
-          image:"https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&h=600&fit=crop&q=80",
-          desc:"Soft cotton kurti for daily wear. Breathable fabric with elegant embroidery." },
-        { id:3, name:"Embroidered Party Dress", category:"girls-dresses", price:4500, oldPrice:5500, gender:"girls", sizes:["S","M","L","XL"],
-          image:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&h=600&fit=crop&q=80",
-          desc:"Stunning embroidered party dress with sequins and thread work. Perfect for weddings." },
-        { id:4, name:"Denim Jacket Classic", category:"boys-dresses", price:3200, oldPrice:4000, gender:"boys", sizes:["S","M","L","XL","XXL"],
-          image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=600&fit=crop&q=80",
-          desc:"Classic denim jacket with vintage wash. Durable fabric for all seasons." },
-        { id:5, name:"Slim Fit Casual Shirt", category:"boys-dresses", price:1500, oldPrice:2200, gender:"boys", sizes:["S","M","L","XL"],
-          image:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&h=600&fit=crop&q=80",
-          desc:"Modern slim fit casual shirt. Premium cotton fabric for college and hangouts." },
-        { id:6, name:"Formal Dress Shirt", category:"boys-dresses", price:2200, oldPrice:2800, gender:"boys", sizes:["M","L","XL","XXL"],
-          image:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=600&fit=crop&q=80",
-          desc:"Premium formal shirt. Wrinkle-free fabric with perfect fit." },
-        { id:7, name:"Running Sports Shoes", category:"shoes", price:3500, oldPrice:4500, gender:"unisex", sizes:["7","8","9","10","11"],
-          image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=600&fit=crop&q=80",
-          desc:"Lightweight running shoes with cushioned sole and breathable mesh." },
-        { id:8, name:"Classic White Sneakers", category:"shoes", price:2800, oldPrice:3200, gender:"unisex", sizes:["6","7","8","9","10"],
-          image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=600&fit=crop&q=80",
-          desc:"Timeless white sneakers. Premium leather with rubber sole." },
-        { id:9, name:"Formal Oxford Shoes", category:"shoes", price:4500, oldPrice:5500, gender:"boys", sizes:["8","9","10","11"],
-          image:"https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=500&h=600&fit=crop&q=80",
-          desc:"Classic Oxford formal shoes. Genuine leather with polished finish." },
-        { id:10, name:"Crystal Pendant Necklace", category:"jewellery", price:850, oldPrice:1200, gender:"girls", sizes:["One Size"],
-          image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=600&fit=crop&q=80",
-          desc:"Elegant crystal pendant necklace with silver chain." },
-        { id:11, name:"Gold Plated Earrings Set", category:"jewellery", price:650, oldPrice:900, gender:"girls", sizes:["One Size"],
-          image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop&q=80",
-          desc:"Gold plated earrings set. 3 pairs of different designs. Hypoallergenic." },
-        { id:12, name:"Diamond Stud Earrings", category:"jewellery", price:1800, oldPrice:2500, gender:"girls", sizes:["One Size"],
-          image:"https://images.unsplash.com/photo-1515562141589-67f0d569b6d2?w=500&h=600&fit=crop&q=80",
-          desc:"Diamond look stud earrings. AAA grade cubic zirconia." },
-        { id:13, name:"Luxury Analog Watch Gold", category:"watches", price:3200, oldPrice:4500, gender:"unisex", sizes:["One Size"],
-          image:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&h=600&fit=crop&q=80",
-          desc:"Premium gold tone analog watch. Japanese movement. Water resistant." },
-        { id:14, name:"Smart Digital Watch", category:"watches", price:5500, oldPrice:7000, gender:"unisex", sizes:["One Size"],
-          image:"https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=500&h=600&fit=crop&q=80",
-          desc:"Smart watch with heart rate monitor, step counter, notifications." },
-        { id:15, name:"Minimalist Silver Watch", category:"watches", price:2200, oldPrice:3000, gender:"girls", sizes:["One Size"],
-          image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=500&h=600&fit=crop&q=80",
-          desc:"Minimalist watch with silver mesh band. Thin case design." },
+        { id:1, name:"Elegant Floral Maxi Dress", category:"girls-dresses", price:2850, oldPrice:3500, gender:"girls", sizes:["S","M","L","XL"], image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop&q=80", desc:"Beautiful floral print maxi dress perfect for parties and casual outings." },
+        { id:2, name:"Casual Cotton Kurti", category:"girls-dresses", price:1200, oldPrice:1800, gender:"girls", sizes:["S","M","L"], image:"https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&h=600&fit=crop&q=80", desc:"Soft cotton kurti for daily wear with elegant embroidery." },
+        { id:3, name:"Embroidered Party Dress", category:"girls-dresses", price:4500, oldPrice:5500, gender:"girls", sizes:["S","M","L","XL"], image:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&h=600&fit=crop&q=80", desc:"Stunning embroidered party dress with sequins and thread work." },
+        { id:4, name:"Denim Jacket Classic", category:"boys-dresses", price:3200, oldPrice:4000, gender:"boys", sizes:["S","M","L","XL","XXL"], image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=600&fit=crop&q=80", desc:"Classic denim jacket with vintage wash. Durable for all seasons." },
+        { id:5, name:"Slim Fit Casual Shirt", category:"boys-dresses", price:1500, oldPrice:2200, gender:"boys", sizes:["S","M","L","XL"], image:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&h=600&fit=crop&q=80", desc:"Modern slim fit casual shirt. Premium cotton fabric." },
+        { id:6, name:"Formal Dress Shirt", category:"boys-dresses", price:2200, oldPrice:2800, gender:"boys", sizes:["M","L","XL","XXL"], image:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=600&fit=crop&q=80", desc:"Premium formal shirt. Wrinkle-free with perfect fit." },
+        { id:7, name:"Running Sports Shoes", category:"shoes", price:3500, oldPrice:4500, gender:"unisex", sizes:["7","8","9","10","11"], image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=600&fit=crop&q=80", desc:"Lightweight running shoes with cushioned sole." },
+        { id:8, name:"Classic White Sneakers", category:"shoes", price:2800, oldPrice:3200, gender:"unisex", sizes:["6","7","8","9","10"], image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=600&fit=crop&q=80", desc:"Timeless white sneakers. Premium leather with rubber sole." },
+        { id:9, name:"Formal Oxford Shoes", category:"shoes", price:4500, oldPrice:5500, gender:"boys", sizes:["8","9","10","11"], image:"https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=500&h=600&fit=crop&q=80", desc:"Classic Oxford formal shoes. Genuine leather." },
+        { id:10, name:"Crystal Pendant Necklace", category:"jewellery", price:850, oldPrice:1200, gender:"girls", sizes:["One Size"], image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&h=600&fit=crop&q=80", desc:"Elegant crystal pendant necklace with silver chain." },
+        { id:11, name:"Gold Plated Earrings Set", category:"jewellery", price:650, oldPrice:900, gender:"girls", sizes:["One Size"], image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop&q=80", desc:"Gold plated earrings set. 3 pairs of different designs." },
+        { id:12, name:"Diamond Stud Earrings", category:"jewellery", price:1800, oldPrice:2500, gender:"girls", sizes:["One Size"], image:"https://images.unsplash.com/photo-1515562141589-67f0d569b6d2?w=500&h=600&fit=crop&q=80", desc:"Diamond look stud earrings. AAA grade cubic zirconia." },
+        { id:13, name:"Luxury Analog Watch Gold", category:"watches", price:3200, oldPrice:4500, gender:"unisex", sizes:["One Size"], image:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&h=600&fit=crop&q=80", desc:"Premium gold tone analog watch. Water resistant." },
+        { id:14, name:"Smart Digital Watch", category:"watches", price:5500, oldPrice:7000, gender:"unisex", sizes:["One Size"], image:"https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=500&h=600&fit=crop&q=80", desc:"Smart watch with heart rate, step counter, notifications." },
+        { id:15, name:"Minimalist Silver Watch", category:"watches", price:2200, oldPrice:3000, gender:"girls", sizes:["One Size"], image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=500&h=600&fit=crop&q=80", desc:"Minimalist watch with silver mesh band." },
     ];
 
-    let cart = [];
-    let orders = JSON.parse(localStorage.getItem('km_orders') || '[]');
-    let selectedProduct = null;
-    let modalQty = 1;
-    let modalSize = '';
-    let couponApplied = false;
-    let couponDiscount = 0;
-    let currentSort = 'newest';
-    let filterPanelOpen = false;
-    let sortMenuOpen = false;
+    let cart = [], orders = JSON.parse(localStorage.getItem('km_orders') || '[]');
+    let selectedProduct = null, modalQty = 1, modalSize = '';
+    let couponApplied = false, couponDiscount = 0;
+    let currentSort = 'newest', filterPanelOpen = false, sortMenuOpen = false;
 
-    // ===== FILTER SYSTEM =====
-    function getAllSizes() {
-        const s = new Set();
-        products.forEach(p => p.sizes.forEach(sz => s.add(sz)));
-        return [...s].sort((a, b) => {
-            const numA = parseInt(a), numB = parseInt(b);
-            if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-            return a.localeCompare(b);
-        });
-    }
+    function getAllSizes() { const s = new Set(); products.forEach(p => p.sizes.forEach(sz => s.add(sz))); return [...s].sort((a, b) => { const nA = parseInt(a), nB = parseInt(b); if (!isNaN(nA) && !isNaN(nB)) return nA - nB; return a.localeCompare(b); }); }
 
     function updateCategoryOptions() {
-        const gender = document.getElementById('filterGender').value;
-        const catSelect = document.getElementById('filterCategory');
-        const current = catSelect.value;
-        let cats;
-        if (gender === 'all') {
-            cats = Object.keys(categoryLabels);
-        } else if (gender === 'boys') {
-            cats = ['boys-dresses', 'shoes', 'watches'];
-        } else {
-            cats = ['girls-dresses', 'shoes', 'jewellery', 'watches'];
-        }
-        catSelect.innerHTML = '<option value="all">All Categories</option>' +
-            cats.map(c => `<option value="${c}" ${c === current ? 'selected' : ''}>${categoryLabels[c]}</option>`).join('');
+        const gender = document.getElementById('filterGender').value, catSelect = document.getElementById('filterCategory'), current = catSelect.value;
+        let cats = gender === 'all' ? Object.keys(categoryLabels) : gender === 'boys' ? ['boys-dresses','shoes','watches'] : ['girls-dresses','shoes','jewellery','watches'];
+        catSelect.innerHTML = '<option value="all">All Categories</option>' + cats.map(c => `<option value="${c}" ${c===current?'selected':''}>${categoryLabels[c]}</option>`).join('');
     }
 
     function updateSizeOptions() {
-        const sizeSelect = document.getElementById('filterSize');
-        const current = sizeSelect.value;
-        const sizes = getAllSizes();
-        sizeSelect.innerHTML = '<option value="all">All Sizes</option>' +
-            sizes.map(s => `<option value="${s}" ${s === current ? 'selected' : ''}>${s}</option>`).join('');
+        const s = document.getElementById('filterSize'), c = s.value, sizes = getAllSizes();
+        s.innerHTML = '<option value="all">All Sizes</option>' + sizes.map(sz => `<option value="${sz}" ${sz===c?'selected':''}>${sz}</option>`).join('');
     }
 
-    function getActiveFilterCount() {
-        let count = 0;
-        if (document.getElementById('filterGender').value !== 'all') count++;
-        if (document.getElementById('filterCategory').value !== 'all') count++;
-        if (document.getElementById('filterSize').value !== 'all') count++;
-        if (document.getElementById('filterPriceMin').value) count++;
-        if (document.getElementById('filterPriceMax').value) count++;
-        const search = document.getElementById('searchInput')?.value;
-        if (search && search.trim()) count++;
-        return count;
-    }
+    function getActiveFilterCount() { let c = 0; if(document.getElementById('filterGender').value!=='all')c++; if(document.getElementById('filterCategory').value!=='all')c++; if(document.getElementById('filterSize').value!=='all')c++; if(document.getElementById('filterPriceMin').value)c++; if(document.getElementById('filterPriceMax').value)c++; if((document.getElementById('searchInput')?.value||'').trim())c++; return c; }
 
     function updateActiveFilterTags() {
-        const container = document.getElementById('activeFilterTags');
-        const badge = document.getElementById('activeFilterBadge');
-        const count = getActiveFilterCount();
+        const container = document.getElementById('activeFilterTags'), badge = document.getElementById('activeFilterBadge'), count = getActiveFilterCount();
         let tags = '';
-
-        const gender = document.getElementById('filterGender').value;
-        if (gender !== 'all') tags += makeTag('Gender: ' + gender.charAt(0).toUpperCase() + gender.slice(1), () => { document.getElementById('filterGender').value = 'all'; updateCategoryOptions(); applyFilters(); });
-
-        const cat = document.getElementById('filterCategory').value;
-        if (cat !== 'all') tags += makeTag(categoryLabels[cat], () => { document.getElementById('filterCategory').value = 'all'; applyFilters(); });
-
-        const size = document.getElementById('filterSize').value;
-        if (size !== 'all') tags += makeTag('Size: ' + size, () => { document.getElementById('filterSize').value = 'all'; applyFilters(); });
-
-        const minP = document.getElementById('filterPriceMin').value;
-        const maxP = document.getElementById('filterPriceMax').value;
-        if (minP || maxP) {
-            let label = 'Rs. ';
-            if (minP) label += Number(minP).toLocaleString();
-            label += ' - ';
-            if (maxP) label += Number(maxP).toLocaleString();
-            else label += '∞';
-            tags += makeTag(label, () => { document.getElementById('filterPriceMin').value = ''; document.getElementById('filterPriceMax').value = ''; applyFilters(); });
-        }
-
+        const g = document.getElementById('filterGender').value; if(g!=='all') tags += `<span class="active-filter-tag inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-50 border border-brand-200 text-[11px] font-medium text-brand-600">${g.charAt(0).toUpperCase()+g.slice(1)}<button onclick="document.getElementById('filterGender').value='all';updateCategoryOptions();applyFilters();" class="hover:text-brand-800"><span class="iconify" data-icon="mdi:close" data-width="12"></span></button></span>`;
+        const cat = document.getElementById('filterCategory').value; if(cat!=='all') tags += `<span class="active-filter-tag inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-50 border border-brand-200 text-[11px] font-medium text-brand-600">${categoryLabels[cat]}<button onclick="document.getElementById('filterCategory').value='all';applyFilters();" class="hover:text-brand-800"><span class="iconify" data-icon="mdi:close" data-width="12"></span></button></span>`;
+        const sz = document.getElementById('filterSize').value; if(sz!=='all') tags += `<span class="active-filter-tag inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-50 border border-brand-200 text-[11px] font-medium text-brand-600">Size: ${sz}<button onclick="document.getElementById('filterSize').value='all';applyFilters();" class="hover:text-brand-800"><span class="iconify" data-icon="mdi:close" data-width="12"></span></button></span>`;
+        const minP = document.getElementById('filterPriceMin').value, maxP = document.getElementById('filterPriceMax').value;
+        if(minP||maxP) { let l='Rs. '; if(minP)l+=Number(minP).toLocaleString(); l+=' – '; l+=maxP?Number(maxP).toLocaleString():'∞'; tags += `<span class="active-filter-tag inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-50 border border-brand-200 text-[11px] font-medium text-brand-600">${l}<button onclick="document.getElementById('filterPriceMin').value='';document.getElementById('filterPriceMax').value='';applyFilters();" class="hover:text-brand-800"><span class="iconify" data-icon="mdi:close" data-width="12"></span></button></span>`; }
         container.innerHTML = tags;
-
-        if (count > 0) {
-            badge.classList.remove('hidden');
-            badge.classList.add('flex');
-            badge.textContent = count;
-        } else {
-            badge.classList.add('hidden');
-            badge.classList.remove('flex');
-        }
-    }
-
-    function makeTag(label, onRemove) {
-        return `<span class="active-filter-tag inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-red/10 border border-brand-red/20 text-[11px] font-medium text-brand-red">
-            ${label}
-            <button onclick="event.stopPropagation();(${onRemove.toString()})()" class="hover:text-white transition-colors"><span class="iconify" data-icon="mdi:close" data-width="12"></span></button>
-        </span>`;
+        if(count>0){badge.classList.remove('hidden');badge.classList.add('flex');badge.textContent=count;}else{badge.classList.add('hidden');badge.classList.remove('flex');}
     }
 
     function applyFilters() {
-        const gender = document.getElementById('filterGender').value;
-        const category = document.getElementById('filterCategory').value;
-        const size = document.getElementById('filterSize').value;
-        const minPrice = parseInt(document.getElementById('filterPriceMin').value) || 0;
-        const maxPrice = parseInt(document.getElementById('filterPriceMax').value) || Infinity;
-        const search = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-
+        const gender=document.getElementById('filterGender').value, category=document.getElementById('filterCategory').value,
+              size=document.getElementById('filterSize').value, minPrice=parseInt(document.getElementById('filterPriceMin').value)||0,
+              maxPrice=parseInt(document.getElementById('filterPriceMax').value)||Infinity, search=(document.getElementById('searchInput')?.value||'').toLowerCase().trim();
         let filtered = products.filter(p => {
-            if (gender !== 'all' && p.gender !== gender) return false;
-            if (category !== 'all' && p.category !== category) return false;
-            if (size !== 'all' && !p.sizes.includes(size)) return false;
-            if (p.price < minPrice || p.price > maxPrice) return false;
-            if (search && !p.name.toLowerCase().includes(search) && !p.category.includes(search) && !p.desc.toLowerCase().includes(search)) return false;
-            return true;
+            if(gender!=='all'&&p.gender!==gender)return false; if(category!=='all'&&p.category!==category)return false;
+            if(size!=='all'&&!p.sizes.includes(size))return false; if(p.price<minPrice||p.price>maxPrice)return false;
+            if(search&&!p.name.toLowerCase().includes(search)&&!p.category.includes(search)&&!p.desc.toLowerCase().includes(search))return false; return true;
         });
-
-        // Sort
-        switch (currentSort) {
-            case 'price-low': filtered.sort((a, b) => a.price - b.price); break;
-            case 'price-high': filtered.sort((a, b) => b.price - a.price); break;
-            case 'name': filtered.sort((a, b) => a.name.localeCompare(b.name)); break;
-            default: filtered.sort((a, b) => b.id - a.id); break;
-        }
-
-        renderProducts(filtered);
-        updateActiveFilterTags();
-        updateCategoryOptions();
+        switch(currentSort){ case 'price-low':filtered.sort((a,b)=>a.price-b.price);break; case 'price-high':filtered.sort((a,b)=>b.price-a.price);break; case 'name':filtered.sort((a,b)=>a.name.localeCompare(b.name));break; default:filtered.sort((a,b)=>b.id-a.id);break; }
+        renderProducts(filtered); updateActiveFilterTags(); updateCategoryOptions();
     }
 
     function resetFilters() {
-        document.getElementById('filterGender').value = 'all';
-        document.getElementById('filterCategory').value = 'all';
-        document.getElementById('filterSize').value = 'all';
-        document.getElementById('filterPriceMin').value = '';
-        document.getElementById('filterPriceMax').value = '';
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) searchInput.value = '';
-        currentSort = 'newest';
-        document.getElementById('sortLabel').textContent = 'Newest';
-        document.querySelectorAll('.sort-check').forEach(el => el.classList.add('hidden'));
+        document.getElementById('filterGender').value='all'; document.getElementById('filterCategory').value='all';
+        document.getElementById('filterSize').value='all'; document.getElementById('filterPriceMin').value='';
+        document.getElementById('filterPriceMax').value=''; const si=document.getElementById('searchInput'); if(si)si.value='';
+        currentSort='newest'; document.getElementById('sortLabel').textContent='Newest';
+        document.querySelectorAll('.sort-check').forEach(el=>el.classList.add('hidden'));
         document.querySelector('.sort-option[data-sort="newest"] .sort-check').classList.remove('hidden');
-        applyFilters();
-        showToast('Filters reset', 'info');
+        applyFilters(); showToast('Filters reset','info');
     }
 
-    function toggleFilterPanel() {
-        filterPanelOpen = !filterPanelOpen;
-        document.getElementById('filterPanel').classList.toggle('open', filterPanelOpen);
-    }
-
-    function toggleSortMenu() {
-        sortMenuOpen = !sortMenuOpen;
-        document.getElementById('sortMenu').classList.toggle('hidden', !sortMenuOpen);
-    }
-
+    function toggleFilterPanel() { filterPanelOpen=!filterPanelOpen; document.getElementById('filterPanel').classList.toggle('open',filterPanelOpen); }
+    function toggleSortMenu() { sortMenuOpen=!sortMenuOpen; document.getElementById('sortMenu').classList.toggle('hidden',!sortMenuOpen); }
     function setSort(sort) {
-        currentSort = sort;
-        const labels = { 'newest': 'Newest', 'price-low': 'Price: Low', 'price-high': 'Price: High', 'name': 'Name: A-Z' };
-        document.getElementById('sortLabel').textContent = labels[sort];
-        document.querySelectorAll('.sort-check').forEach(el => el.classList.add('hidden'));
+        currentSort=sort; const labels={'newest':'Newest','price-low':'Price: Low','price-high':'Price: High','name':'Name: A-Z'};
+        document.getElementById('sortLabel').textContent=labels[sort];
+        document.querySelectorAll('.sort-check').forEach(el=>el.classList.add('hidden'));
         document.querySelector(`.sort-option[data-sort="${sort}"] .sort-check`).classList.remove('hidden');
-        toggleSortMenu();
-        applyFilters();
+        toggleSortMenu(); applyFilters();
     }
+    document.addEventListener('click',(e)=>{if(sortMenuOpen&&!e.target.closest('.relative')){sortMenuOpen=false;document.getElementById('sortMenu').classList.add('hidden');}});
 
-    // Close sort menu on outside click
-    document.addEventListener('click', (e) => {
-        if (sortMenuOpen && !e.target.closest('.relative')) {
-            sortMenuOpen = false;
-            document.getElementById('sortMenu').classList.add('hidden');
-        }
-    });
-
-    // ===== RENDER PRODUCTS =====
     function renderProducts(filtered) {
-        const grid = document.getElementById('productGrid');
-        const empty = document.getElementById('emptyState');
-        const countEl = document.getElementById('productCount');
-        countEl.textContent = `Showing ${filtered.length} product${filtered.length !== 1 ? 's' : ''}`;
-        if (!filtered.length) { grid.innerHTML = ''; empty.classList.remove('hidden'); return; }
-        empty.classList.add('hidden');
-        grid.innerHTML = filtered.map((p, i) => {
-            const disc = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
-            return `<div class="product-card reveal delay-${(i % 4) * 100} group cursor-pointer" onclick="openProductModal(${p.id})">
-                <div class="relative rounded-2xl overflow-hidden bg-surface-2 border border-white/5 hover:border-white/10 transition-all duration-300">
+        const grid=document.getElementById('productGrid'), empty=document.getElementById('emptyState'), countEl=document.getElementById('productCount');
+        countEl.textContent=`Showing ${filtered.length} product${filtered.length!==1?'s':''}`;
+        if(!filtered.length){grid.innerHTML='';empty.classList.remove('hidden');return;} empty.classList.add('hidden');
+        grid.innerHTML = filtered.map((p,i)=>{
+            const disc=p.oldPrice?Math.round((1-p.price/p.oldPrice)*100):0;
+            return `<div class="product-card reveal delay-${(i%4)*100} group cursor-pointer" onclick="openProductModal(${p.id})">
+                <div class="relative rounded-2xl overflow-hidden bg-white border border-surface-300 card-shadow card-shadow-hover transition-all duration-300">
                     <div class="aspect-[3/4] overflow-hidden"><img src="${p.image}" alt="${p.name}" class="product-img w-full h-full object-cover transition-transform duration-700" loading="lazy"></div>
-                    ${disc ? `<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-brand-red text-[10px] font-bold tracking-wider uppercase">-${disc}%</span>` : ''}
+                    ${disc?`<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-brand-500 text-[10px] font-bold tracking-wider uppercase text-white">-${disc}%</span>`:''}
                     <div class="quick-actions absolute bottom-3 left-3 right-3 flex gap-2">
-                        <button onclick="event.stopPropagation();quickAddToCart(${p.id})" class="flex-1 py-2.5 rounded-xl bg-white/90 text-black text-[11px] font-semibold tracking-wider uppercase hover:bg-white transition-colors flex items-center justify-center gap-1.5"><span class="iconify" data-icon="mdi:cart-plus" data-width="14"></span> Add to Cart</button>
-                        <button onclick="event.stopPropagation();quickWhatsApp(${p.id})" class="w-10 h-10 rounded-xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-colors"><span class="iconify" data-icon="mdi:whatsapp" data-width="16"></span></button>
+                        <button onclick="event.stopPropagation();quickAddToCart(${p.id})" class="flex-1 py-2.5 rounded-xl bg-white/95 text-gray-900 text-[11px] font-semibold tracking-wider uppercase hover:bg-white transition-colors flex items-center justify-center gap-1.5 shadow-lg"><span class="iconify" data-icon="mdi:cart-plus" data-width="14"></span> Add</button>
+                        <button onclick="event.stopPropagation();quickWhatsApp(${p.id})" class="w-10 h-10 rounded-xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-colors shadow-lg"><span class="iconify" data-icon="mdi:whatsapp" data-width="16"></span></button>
                     </div>
                 </div>
                 <div class="mt-3 px-1">
-                    <p class="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-1">${categoryLabels[p.category] || p.category}</p>
-                    <h3 class="text-sm font-medium tracking-tight text-neutral-200 group-hover:text-white transition-colors line-clamp-1">${p.name}</h3>
+                    <p class="text-[10px] font-mono tracking-widest uppercase text-gray-400 mb-1">${categoryLabels[p.category]||p.category}</p>
+                    <h3 class="text-sm font-medium tracking-tight text-gray-700 group-hover:text-gray-900 transition-colors line-clamp-1">${p.name}</h3>
                     <div class="flex items-center gap-2 mt-1.5">
-                        <span class="text-sm font-bold text-brand-red">Rs. ${p.price.toLocaleString()}</span>
-                        ${p.oldPrice ? `<span class="text-xs text-neutral-500 line-through">Rs. ${p.oldPrice.toLocaleString()}</span>` : ''}
+                        <span class="text-sm font-bold text-brand-600">Rs. ${p.price.toLocaleString()}</span>
+                        ${p.oldPrice?`<span class="text-xs text-gray-300 line-through">Rs. ${p.oldPrice.toLocaleString()}</span>`:''}
                     </div>
                 </div>
             </div>`;
         }).join('');
-        setTimeout(() => { document.querySelectorAll('#productGrid .reveal').forEach(el => el.classList.add('active')); }, 50);
+        setTimeout(()=>{document.querySelectorAll('#productGrid .reveal').forEach(el=>el.classList.add('active'));},50);
     }
 
-    // ===== PRODUCT MODAL =====
     function openProductModal(id) {
-        selectedProduct = products.find(p => p.id === id); if (!selectedProduct) return;
-        modalQty = 1; modalSize = selectedProduct.sizes[0] || '';
-        document.getElementById('modalImage').src = selectedProduct.image;
-        document.getElementById('modalCategory').textContent = categoryLabels[selectedProduct.category] || selectedProduct.category;
-        document.getElementById('modalName').textContent = selectedProduct.name;
-        document.getElementById('modalPrice').textContent = `Rs. ${selectedProduct.price.toLocaleString()}`;
-        document.getElementById('modalOldPrice').textContent = selectedProduct.oldPrice ? `Rs. ${selectedProduct.oldPrice.toLocaleString()}` : '';
-        document.getElementById('modalDesc').textContent = selectedProduct.desc;
-        document.getElementById('modalQty').textContent = modalQty;
-        document.getElementById('modalSizes').innerHTML = selectedProduct.sizes.map(s =>
-            `<button onclick="selectSize('${s}')" class="size-btn ${s === modalSize ? 'active' : ''} px-4 py-2 rounded-lg border border-white/10 text-xs font-medium hover:border-white/30 transition-all">${s}</button>`
-        ).join('');
-        document.getElementById('productModal').classList.remove('hidden'); document.body.style.overflow = 'hidden';
+        selectedProduct=products.find(p=>p.id===id); if(!selectedProduct)return;
+        modalQty=1; modalSize=selectedProduct.sizes[0]||'';
+        document.getElementById('modalImage').src=selectedProduct.image;
+        document.getElementById('modalCategory').textContent=categoryLabels[selectedProduct.category]||selectedProduct.category;
+        document.getElementById('modalName').textContent=selectedProduct.name;
+        document.getElementById('modalPrice').textContent=`Rs. ${selectedProduct.price.toLocaleString()}`;
+        document.getElementById('modalOldPrice').textContent=selectedProduct.oldPrice?`Rs. ${selectedProduct.oldPrice.toLocaleString()}`:'';
+        document.getElementById('modalDesc').textContent=selectedProduct.desc;
+        document.getElementById('modalQty').textContent=modalQty;
+        document.getElementById('modalSizes').innerHTML=selectedProduct.sizes.map(s=>`<button onclick="selectSize('${s}')" class="size-btn ${s===modalSize?'active':''} px-4 py-2 rounded-lg border border-surface-300 text-xs font-medium hover:border-brand-300 transition-all bg-white">${s}</button>`).join('');
+        document.getElementById('productModal').classList.remove('hidden'); document.body.style.overflow='hidden';
     }
-    function closeProductModal() { document.getElementById('productModal').classList.add('hidden'); document.body.style.overflow = ''; selectedProduct = null; }
-    function selectSize(s) { modalSize = s; document.querySelectorAll('.size-btn').forEach(b => { b.classList.toggle('active', b.textContent.trim() === s); }); }
-    function changeModalQty(d) { modalQty = Math.max(1, Math.min(10, modalQty + d)); document.getElementById('modalQty').textContent = modalQty; }
+    function closeProductModal(){document.getElementById('productModal').classList.add('hidden');document.body.style.overflow='';selectedProduct=null;}
+    function selectSize(s){modalSize=s;document.querySelectorAll('.size-btn').forEach(b=>{b.classList.toggle('active',b.textContent.trim()===s);});}
+    function changeModalQty(d){modalQty=Math.max(1,Math.min(10,modalQty+d));document.getElementById('modalQty').textContent=modalQty;}
 
-    // ===== CART =====
-    function addToCartFromModal() { if (!selectedProduct) return; addToCart(selectedProduct.id, modalSize, modalQty); closeProductModal(); }
-    function quickAddToCart(id) { const p = products.find(pr => pr.id === id); addToCart(id, p.sizes[0], 1); }
-    function addToCart(id, size, qty) {
-        const ex = cart.find(c => c.id === id && c.size === size);
-        if (ex) { ex.qty = Math.min(10, ex.qty + qty); } else { cart.push({ id, size, qty }); }
-        updateCartUI(); showToast('Added to cart!', 'success');
+    function addToCartFromModal(){if(!selectedProduct)return;addToCart(selectedProduct.id,modalSize,modalQty);closeProductModal();}
+    function quickAddToCart(id){const p=products.find(pr=>pr.id===id);addToCart(id,p.sizes[0],1);}
+    function addToCart(id,size,qty){const ex=cart.find(c=>c.id===id&&c.size===size);if(ex){ex.qty=Math.min(10,ex.qty+qty);}else{cart.push({id,size,qty});}updateCartUI();showToast('Added to cart!','success');}
+    function removeFromCart(i){cart.splice(i,1);updateCartUI();}
+    function updateCartQty(i,d){cart[i].qty=Math.max(1,Math.min(10,cart[i].qty+d));updateCartUI();}
+    function getCartTotal(){return cart.reduce((s,it)=>{const p=products.find(pr=>pr.id===it.id);return s+(p?p.price*it.qty:0);},0);}
+    function updateCartUI(){
+        const countEl=document.getElementById('cartCount'),itemCountEl=document.getElementById('cartItemCount'),itemsEl=document.getElementById('cartItems'),emptyEl=document.getElementById('cartEmpty'),footerEl=document.getElementById('cartFooter'),totalEl=document.getElementById('cartTotal');
+        const total=cart.reduce((s,i)=>s+i.qty,0);
+        if(total>0){countEl.classList.remove('hidden');countEl.textContent=total;emptyEl.classList.add('hidden');footerEl.classList.remove('hidden');itemsEl.classList.remove('hidden');}
+        else{countEl.classList.add('hidden');emptyEl.classList.remove('hidden');footerEl.classList.add('hidden');itemsEl.classList.add('hidden');}
+        itemCountEl.textContent=total;totalEl.textContent=`Rs. ${getCartTotal().toLocaleString()}`;
+        itemsEl.innerHTML=cart.map((item,i)=>{const p=products.find(pr=>pr.id===item.id);if(!p)return'';return`<div class="flex gap-4 p-3 rounded-xl bg-surface-50 border border-surface-200"><img src="${p.image}" alt="" class="w-16 h-20 object-cover rounded-lg"><div class="flex-1 min-w-0"><h4 class="text-sm font-medium truncate text-gray-900">${p.name}</h4><p class="text-[10px] text-gray-400 mt-0.5">Size: ${item.size}</p><p class="text-sm font-bold text-brand-600 mt-1">Rs. ${(p.price*item.qty).toLocaleString()}</p><div class="flex items-center justify-between mt-2"><div class="flex items-center gap-2"><button onclick="updateCartQty(${i},-1)" class="w-6 h-6 rounded border border-surface-300 flex items-center justify-center text-xs hover:border-brand-300 bg-white">−</button><span class="text-xs font-medium w-5 text-center text-gray-900">${item.qty}</span><button onclick="updateCartQty(${i},1)" class="w-6 h-6 rounded border border-surface-300 flex items-center justify-center text-xs hover:border-brand-300 bg-white">+</button></div><button onclick="removeFromCart(${i})" class="text-gray-300 hover:text-red-500 transition-colors"><span class="iconify" data-icon="mdi:delete-outline" data-width="16"></span></button></div></div></div>`;}).join('');
     }
-    function removeFromCart(i) { cart.splice(i, 1); updateCartUI(); }
-    function updateCartQty(i, d) { cart[i].qty = Math.max(1, Math.min(10, cart[i].qty + d)); updateCartUI(); }
-    function getCartTotal() { return cart.reduce((s, it) => { const p = products.find(pr => pr.id === it.id); return s + (p ? p.price * it.qty : 0); }, 0); }
-    function updateCartUI() {
-        const countEl = document.getElementById('cartCount'), itemCountEl = document.getElementById('cartItemCount'),
-            itemsEl = document.getElementById('cartItems'), emptyEl = document.getElementById('cartEmpty'),
-            footerEl = document.getElementById('cartFooter'), totalEl = document.getElementById('cartTotal');
-        const total = cart.reduce((s, i) => s + i.qty, 0);
-        if (total > 0) { countEl.classList.remove('hidden'); countEl.textContent = total; emptyEl.classList.add('hidden'); footerEl.classList.remove('hidden'); itemsEl.classList.remove('hidden'); }
-        else { countEl.classList.add('hidden'); emptyEl.classList.remove('hidden'); footerEl.classList.add('hidden'); itemsEl.classList.add('hidden'); }
-        itemCountEl.textContent = total;
-        totalEl.textContent = `Rs. ${getCartTotal().toLocaleString()}`;
-        itemsEl.innerHTML = cart.map((item, i) => {
-            const p = products.find(pr => pr.id === item.id); if (!p) return '';
-            return `<div class="flex gap-4 p-3 rounded-xl bg-surface-2 border border-white/5">
-                <img src="${p.image}" alt="" class="w-16 h-20 object-cover rounded-lg">
-                <div class="flex-1 min-w-0"><h4 class="text-sm font-medium truncate">${p.name}</h4><p class="text-[10px] text-neutral-500 mt-0.5">Size: ${item.size}</p>
-                <p class="text-sm font-bold text-brand-red mt-1">Rs. ${(p.price * item.qty).toLocaleString()}</p>
-                <div class="flex items-center justify-between mt-2"><div class="flex items-center gap-2"><button onclick="updateCartQty(${i},-1)" class="w-6 h-6 rounded border border-white/10 flex items-center justify-center text-xs hover:border-white/30">−</button><span class="text-xs font-medium w-5 text-center">${item.qty}</span><button onclick="updateCartQty(${i},1)" class="w-6 h-6 rounded border border-white/10 flex items-center justify-center text-xs hover:border-white/30">+</button></div>
-                <button onclick="removeFromCart(${i})" class="text-neutral-500 hover:text-red-500 transition-colors"><span class="iconify" data-icon="mdi:delete-outline" data-width="16"></span></button></div></div></div>`;
-        }).join('');
-    }
-    function toggleCart() { const o = document.getElementById('cartOverlay'); o.classList.toggle('hidden'); document.body.style.overflow = o.classList.contains('hidden') ? '' : 'hidden'; }
+    function toggleCart(){const o=document.getElementById('cartOverlay');o.classList.toggle('hidden');document.body.style.overflow=o.classList.contains('hidden')?'':'hidden';}
 
-    // ===== CHECKOUT =====
-    function openCheckout() {
-        if (!cart.length) return; toggleCart(); couponApplied = false; couponDiscount = 0;
-        document.getElementById('coCoupon').value = ''; document.getElementById('couponMsg').classList.add('hidden');
-        document.getElementById('checkoutSummary').innerHTML = cart.map(it => { const p = products.find(pr => pr.id === it.id); return `<div class="flex justify-between text-neutral-400"><span class="truncate mr-2">${p.name} × ${it.qty}</span><span class="whitespace-nowrap">Rs. ${(p.price * it.qty).toLocaleString()}</span></div>`; }).join('');
-        updateCheckoutTotal();
-        document.getElementById('checkoutModal').classList.remove('hidden'); document.body.style.overflow = 'hidden';
-    }
-    function updateCheckoutTotal() { let t = getCartTotal(); if (couponApplied) t -= Math.round(t * couponDiscount); document.getElementById('checkoutTotal').textContent = `Rs. ${t.toLocaleString()}`; }
-    function applyCoupon() {
-        const code = document.getElementById('coCoupon').value.trim().toUpperCase(), msg = document.getElementById('couponMsg');
-        msg.classList.remove('hidden');
-        if (code === 'KHAN30') { couponApplied = true; couponDiscount = 0.3; msg.textContent = '✓ 30% discount applied!'; msg.className = 'text-xs mt-2 text-green-500'; }
-        else if (code === 'KHAN10') { couponApplied = true; couponDiscount = 0.1; msg.textContent = '✓ 10% discount applied!'; msg.className = 'text-xs mt-2 text-green-500'; }
-        else { couponApplied = false; couponDiscount = 0; msg.textContent = '✗ Invalid coupon code.'; msg.className = 'text-xs mt-2 text-red-500'; }
-        updateCheckoutTotal();
-    }
-    function closeCheckout() { document.getElementById('checkoutModal').classList.add('hidden'); document.body.style.overflow = ''; }
-    function submitOrder(e) {
-        e.preventDefault();
-        let total = getCartTotal(), discAmt = couponApplied ? Math.round(total * couponDiscount) : 0, finalTotal = total - discAmt;
-        const order = {
-            id: 'KM-' + String(Math.floor(1000 + Math.random() * 9000)),
-            name: document.getElementById('coName').value, phone: document.getElementById('coPhone').value,
-            address: document.getElementById('coAddress').value, city: document.getElementById('coCity').value,
-            payment: document.querySelector('input[name="payment"]:checked').value,
-            items: cart.map(it => { const p = products.find(pr => pr.id === it.id); return { name: p.name, price: p.price, size: it.size, qty: it.qty }; }),
-            subtotal: total, discount: discAmt, total: finalTotal, status: 'Pending', date: new Date().toLocaleString()
-        };
-        orders.push(order); localStorage.setItem('km_orders', JSON.stringify(orders));
-        document.getElementById('orderId').textContent = `Order ID: #${order.id}`;
-        closeCheckout(); document.getElementById('successModal').classList.remove('hidden');
-        cart = []; updateCartUI(); document.getElementById('checkoutForm').reset();
-    }
-    function closeSuccess() { document.getElementById('successModal').classList.add('hidden'); document.body.style.overflow = ''; }
+    function openCheckout(){if(!cart.length)return;toggleCart();couponApplied=false;couponDiscount=0;document.getElementById('coCoupon').value='';document.getElementById('couponMsg').classList.add('hidden');document.getElementById('checkoutSummary').innerHTML=cart.map(it=>{const p=products.find(pr=>pr.id===it.id);return`<div class="flex justify-between text-gray-400"><span class="truncate mr-2">${p.name} × ${it.qty}</span><span class="whitespace-nowrap">Rs. ${(p.price*it.qty).toLocaleString()}</span></div>`;}).join('');updateCheckoutTotal();document.getElementById('checkoutModal').classList.remove('hidden');document.body.style.overflow='hidden';}
+    function updateCheckoutTotal(){let t=getCartTotal();if(couponApplied)t-=Math.round(t*couponDiscount);document.getElementById('checkoutTotal').textContent=`Rs. ${t.toLocaleString()}`;}
+    function applyCoupon(){const code=document.getElementById('coCoupon').value.trim().toUpperCase(),msg=document.getElementById('couponMsg');msg.classList.remove('hidden');if(code==='KHAN30'){couponApplied=true;couponDiscount=0.3;msg.textContent='✓ 30% discount applied!';msg.className='text-xs mt-2 text-green-600';}else if(code==='KHAN10'){couponApplied=true;couponDiscount=0.1;msg.textContent='✓ 10% discount applied!';msg.className='text-xs mt-2 text-green-600';}else{couponApplied=false;couponDiscount=0;msg.textContent='✗ Invalid coupon code.';msg.className='text-xs mt-2 text-red-500';}updateCheckoutTotal();}
+    function closeCheckout(){document.getElementById('checkoutModal').classList.add('hidden');document.body.style.overflow='';}
+    function submitOrder(e){e.preventDefault();let total=getCartTotal(),discAmt=couponApplied?Math.round(total*couponDiscount):0,finalTotal=total-discAmt;const order={id:'KM-'+String(Math.floor(1000+Math.random()*9000)),name:document.getElementById('coName').value,phone:document.getElementById('coPhone').value,address:document.getElementById('coAddress').value,city:document.getElementById('coCity').value,payment:document.querySelector('input[name="payment"]:checked').value,items:cart.map(it=>{const p=products.find(pr=>pr.id===it.id);return{name:p.name,price:p.price,size:it.size,qty:it.qty};}),subtotal:total,discount:discAmt,total:finalTotal,status:'Pending',date:new Date().toLocaleString()};orders.push(order);localStorage.setItem('km_orders',JSON.stringify(orders));document.getElementById('orderId').textContent=`Order ID: #${order.id}`;closeCheckout();document.getElementById('successModal').classList.remove('hidden');cart=[];updateCartUI();document.getElementById('checkoutForm').reset();}
+    function closeSuccess(){document.getElementById('successModal').classList.add('hidden');document.body.style.overflow='';}
 
-    // ===== WHATSAPP =====
-    function whatsappFromModal() { if (!selectedProduct) return; const msg = `🛒 *Order - KHAN.MART*\n\n📦 *${selectedProduct.name}*\n💰 Rs. ${selectedProduct.price.toLocaleString()}\n📏 Size: ${modalSize}\n🔢 Qty: ${modalQty}\n\n💵 Total: Rs. ${(selectedProduct.price * modalQty).toLocaleString()}`; window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank'); }
-    function quickWhatsApp(id) { const p = products.find(pr => pr.id === id); window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`🛒 *Order - KHAN.MART*\n\n📦 *${p.name}*\n💰 Rs. ${p.price.toLocaleString()}`)}`, '_blank'); }
-    function orderViaWhatsApp() { if (!cart.length) return; let msg = `🛒 *Order - KHAN.MART*\n\n`, total = 0; cart.forEach(it => { const p = products.find(pr => pr.id === it.id); if (p) { const t = p.price * it.qty; total += t; msg += `📦 ${p.name} (${it.size}) × ${it.qty} = Rs. ${t.toLocaleString()}\n`; } }); msg += `\n💵 *Total: Rs. ${total.toLocaleString()}*`; window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank'); }
+    function whatsappFromModal(){if(!selectedProduct)return;const msg=`🛒 *Order - KHAN.MART*\n\n📦 *${selectedProduct.name}*\n💰 Rs. ${selectedProduct.price.toLocaleString()}\n📏 Size: ${modalSize}\n🔢 Qty: ${modalQty}\n\n💵 Total: Rs. ${(selectedProduct.price*modalQty).toLocaleString()}`;window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');}
+    function quickWhatsApp(id){const p=products.find(pr=>pr.id===id);window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`🛒 *Order - KHAN.MART*\n\n📦 *${p.name}*\n💰 Rs. ${p.price.toLocaleString()}`)}`,'_blank');}
+    function orderViaWhatsApp(){if(!cart.length)return;let msg=`🛒 *Order - KHAN.MART*\n\n`,total=0;cart.forEach(it=>{const p=products.find(pr=>pr.id===it.id);if(p){const t=p.price*it.qty;total+=t;msg+=`📦 ${p.name} (${it.size}) × ${it.qty} = Rs. ${t.toLocaleString()}\n`;}});msg+=`\n💵 *Total: Rs. ${total.toLocaleString()}*`;window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');}
 
-    // ===== TOAST =====
-    function showToast(message, type = 'info') {
-        const c = document.getElementById('toastContainer'), t = document.createElement('div');
-        const colors = { success: 'border-green-500/30 bg-green-500/10', error: 'border-red-500/30 bg-red-500/10', info: 'border-white/10 bg-white/5' };
-        const icons = { success: 'mdi:check-circle', error: 'mdi:alert-circle', info: 'mdi:information' };
-        const ic = { success: 'text-green-500', error: 'text-red-500', info: 'text-neutral-400' };
-        t.className = `toast flex items-center gap-3 px-5 py-3 rounded-xl border ${colors[type]} backdrop-blur-md`;
-        t.innerHTML = `<span class="iconify ${ic[type]}" data-icon="${icons[type]}" data-width="18"></span><span class="text-sm">${message}</span>`;
-        c.appendChild(t); setTimeout(() => t.remove(), 3000);
-    }
+    function showToast(message,type='info'){const c=document.getElementById('toastContainer'),t=document.createElement('div');const colors={success:'border-green-200 bg-green-50',error:'border-red-200 bg-red-50',info:'border-surface-300 bg-white'};const icons={success:'mdi:check-circle',error:'mdi:alert-circle',info:'mdi:information'};const ic={success:'text-green-500',error:'text-red-500',info:'text-gray-400'};t.className=`toast flex items-center gap-3 px-5 py-3 rounded-xl border ${colors[type]} shadow-lg`;t.innerHTML=`<span class="iconify ${ic[type]}" data-icon="${icons[type]}" data-width="18"></span><span class="text-sm text-gray-700">${message}</span>`;c.appendChild(t);setTimeout(()=>t.remove(),3000);}
 
-    // ===== NAV =====
-    function toggleSearch() { const b = document.getElementById('searchBar'); b.classList.toggle('hidden'); if (!b.classList.contains('hidden')) document.getElementById('searchInput').focus(); }
-    function toggleMobileMenu() { const m = document.getElementById('mobileMenu'), i = document.getElementById('menuIcon'); m.classList.toggle('hidden'); i.dataset.icon = m.classList.contains('hidden') ? 'mdi:menu' : 'mdi:close'; }
-    function goHome() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function toggleSearch(){const b=document.getElementById('searchBar');b.classList.toggle('hidden');if(!b.classList.contains('hidden'))document.getElementById('searchInput').focus();}
+    function toggleMobileMenu(){const m=document.getElementById('mobileMenu'),i=document.getElementById('menuIcon');m.classList.toggle('hidden');i.dataset.icon=m.classList.contains('hidden')?'mdi:menu':'mdi:close';}
+    function goHome(){window.scrollTo({top:0,behavior:'smooth'});}
 
-    // ===== ADMIN =====
-    function showAdmin() { document.getElementById('adminPanel').classList.remove('hidden'); document.body.style.overflow = 'hidden'; updateAdminDashboard(); showAdminTab('dashboard'); }
-    function closeAdmin() { document.getElementById('adminPanel').classList.add('hidden'); document.body.style.overflow = ''; }
-    function showAdminTab(tab) {
-        document.querySelectorAll('.admin-tab').forEach(t => { const a = t.dataset.tab === tab; t.style.borderColor = a ? '#B91C1C' : ''; t.style.color = a ? '#B91C1C' : ''; });
-        document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.add('hidden'));
-        document.getElementById(`tab-${tab}`).classList.remove('hidden');
-        if (tab === 'products') renderAdminProducts(); if (tab === 'orders') renderAdminOrders();
-    }
-    function updateAdminDashboard() {
-        document.getElementById('adminTotalProducts').textContent = products.length;
-        document.getElementById('adminTotalOrders').textContent = orders.length;
-        document.getElementById('adminRevenue').textContent = `Rs. ${orders.reduce((s, o) => s + o.total, 0).toLocaleString()}`;
-        const r = document.getElementById('adminRecentOrders');
-        if (!orders.length) { r.innerHTML = '<p class="text-sm text-neutral-500">No orders yet.</p>'; return; }
-        r.innerHTML = orders.slice(-5).reverse().map(o => `<div class="flex items-center justify-between p-3 rounded-lg bg-surface-3 border border-white/5"><div><p class="text-sm font-medium">${o.name}</p><p class="text-xs text-neutral-500">${o.id}</p></div><div class="text-right"><p class="text-sm font-bold">Rs. ${o.total.toLocaleString()}</p><span class="text-[10px] px-2 py-0.5 rounded-full ${o.status === 'Pending' ? 'bg-yellow-500/10 text-yellow-500' : 'bg-green-500/10 text-green-500'}">${o.status}</span></div></div>`).join('');
-    }
-    function renderAdminProducts() {
-        document.getElementById('adminProductsTable').innerHTML = products.map(p => `<tr class="hover:bg-surface-2 transition-colors"><td class="px-4 py-3"><div class="flex items-center gap-3"><img src="${p.image}" alt="" class="w-10 h-12 object-cover rounded-lg"><span class="text-sm truncate max-w-[200px]">${p.name}</span></div></td><td class="px-4 py-3 text-xs text-neutral-400">${p.gender}</td><td class="px-4 py-3 text-sm font-medium">Rs. ${p.price.toLocaleString()}</td><td class="px-4 py-3"><button onclick="deleteProduct(${p.id})" class="text-xs text-red-500 hover:text-red-400 flex items-center gap-1"><span class="iconify" data-icon="mdi:delete-outline" data-width="14"></span> Delete</button></td></tr>`).join('');
-    }
-    function renderAdminOrders() {
-        const c = document.getElementById('adminOrdersTable');
-        if (!orders.length) { c.innerHTML = '<p class="text-sm text-neutral-500">No orders yet.</p>'; return; }
-        c.innerHTML = orders.slice().reverse().map((o, i) => `<div class="p-5 rounded-xl border border-white/5 bg-surface-2"><div class="flex items-start justify-between mb-3"><div><p class="font-semibold">${o.name}</p><p class="text-xs text-neutral-500">${o.id} • ${o.phone} • ${o.city}</p></div><div class="flex items-center gap-2"><span class="text-[10px] px-2.5 py-1 rounded-full ${o.status === 'Pending' ? 'bg-yellow-500/10 text-yellow-500' : 'bg-green-500/10 text-green-500'} font-medium">${o.status}</span>${o.status === 'Pending' ? `<button onclick="updateOrderStatus(${orders.length - 1 - i})" class="text-[10px] px-2.5 py-1 rounded-full bg-brand-red/10 text-brand-red font-medium hover:bg-brand-red/20 transition-colors">Confirm</button>` : ''}</div></div><p class="text-xs text-neutral-400 mb-2">${o.address}</p><div class="text-xs text-neutral-400 space-y-0.5 mb-2">${o.items.map(it => `<p>• ${it.name} (${it.size}) × ${it.qty} — Rs. ${(it.price * it.qty).toLocaleString()}</p>`).join('')}</div><div class="flex items-center justify-between pt-2 border-t border-white/5"><span class="text-xs text-neutral-500">${o.payment.toUpperCase()} • ${o.date}</span><span class="font-bold text-brand-red">Rs. ${o.total.toLocaleString()}</span></div></div>`).join('');
-    }
-    function updateOrderStatus(i) { orders[i].status = 'Confirmed'; localStorage.setItem('km_orders', JSON.stringify(orders)); renderAdminOrders(); updateAdminDashboard(); showToast('Order confirmed!', 'success'); }
-    function deleteProduct(id) { if (confirm('Delete this product?')) { products = products.filter(p => p.id !== id); applyFilters(); renderAdminProducts(); updateAdminDashboard(); showToast('Product deleted', 'info'); } }
-    function showAddProductForm() { document.getElementById('addProductForm').classList.remove('hidden'); }
-    function hideAddProductForm() { document.getElementById('addProductForm').classList.add('hidden'); }
-    function addNewProduct() {
-        const name = document.getElementById('apName').value.trim(), category = document.getElementById('apCategory').value,
-            price = parseInt(document.getElementById('apPrice').value), oldPrice = parseInt(document.getElementById('apOldPrice').value) || null,
-            gender = document.getElementById('apGender').value,
-            sizes = document.getElementById('apSizes').value.split(',').map(s => s.trim()).filter(Boolean),
-            image = document.getElementById('apImage').value.trim() || 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&h=600&fit=crop&q=80',
-            desc = document.getElementById('apDesc').value.trim() || 'No description.';
-        if (!name || !category || !price) { showToast('Fill name, category, and price', 'error'); return; }
-        products.push({ id: Date.now(), name, category, price, oldPrice, gender, sizes: sizes.length ? sizes : ['One Size'], image, desc });
-        hideAddProductForm(); updateSizeOptions(); applyFilters(); renderAdminProducts(); updateAdminDashboard(); showToast('Product added!', 'success');
-        ['apName', 'apCategory', 'apPrice', 'apOldPrice', 'apGender', 'apSizes', 'apImage', 'apDesc'].forEach(id => document.getElementById(id).value = '');
-    }
+    function showAdmin(){document.getElementById('adminPanel').classList.remove('hidden');document.body.style.overflow='hidden';updateAdminDashboard();showAdminTab('dashboard');}
+    function closeAdmin(){document.getElementById('adminPanel').classList.add('hidden');document.body.style.overflow='';}
+    function showAdminTab(tab){document.querySelectorAll('.admin-tab').forEach(t=>{const a=t.dataset.tab===tab;t.style.borderColor=a?'#6366F1':'';t.style.color=a?'#6366F1':'';t.style.background=a?'#EEF2FF':'';});document.querySelectorAll('.admin-tab-content').forEach(c=>c.classList.add('hidden'));document.getElementById(`tab-${tab}`).classList.remove('hidden');if(tab==='products')renderAdminProducts();if(tab==='orders')renderAdminOrders();}
+    function updateAdminDashboard(){document.getElementById('adminTotalProducts').textContent=products.length;document.getElementById('adminTotalOrders').textContent=orders.length;document.getElementById('adminRevenue').textContent=`Rs. ${orders.reduce((s,o)=>s+o.total,0).toLocaleString()}`;const r=document.getElementById('adminRecentOrders');if(!orders.length){r.innerHTML='<p class="text-sm text-gray-400">No orders yet.</p>';return;}r.innerHTML=orders.slice(-5).reverse().map(o=>`<div class="flex items-center justify-between p-3 rounded-lg bg-surface-50 border border-surface-200"><div><p class="text-sm font-medium text-gray-900">${o.name}</p><p class="text-xs text-gray-400">${o.id}</p></div><div class="text-right"><p class="text-sm font-bold text-gray-900">Rs. ${o.total.toLocaleString()}</p><span class="text-[10px] px-2 py-0.5 rounded-full ${o.status==='Pending'?'bg-amber-50 text-amber-600 border border-amber-200':'bg-green-50 text-green-600 border border-green-200'}">${o.status}</span></div></div>`).join('');}
+    function renderAdminProducts(){document.getElementById('adminProductsTable').innerHTML=products.map(p=>`<tr class="hover:bg-surface-50 transition-colors"><td class="px-4 py-3"><div class="flex items-center gap-3"><img src="${p.image}" alt="" class="w-10 h-12 object-cover rounded-lg"><span class="text-sm truncate max-w-[200px] text-gray-900">${p.name}</span></div></td><td class="px-4 py-3 text-xs text-gray-400">${p.gender}</td><td class="px-4 py-3 text-sm font-medium text-gray-900">Rs. ${p.price.toLocaleString()}</td><td class="px-4 py-3"><button onclick="deleteProduct(${p.id})" class="text-xs text-red-400 hover:text-red-600 flex items-center gap-1"><span class="iconify" data-icon="mdi:delete-outline" data-width="14"></span> Delete</button></td></tr>`).join('');}
+    function renderAdminOrders(){const c=document.getElementById('adminOrdersTable');if(!orders.length){c.innerHTML='<p class="text-sm text-gray-400">No orders yet.</p>';return;}c.innerHTML=orders.slice().reverse().map((o,i)=>`<div class="p-5 rounded-xl border border-surface-200 bg-white card-shadow"><div class="flex items-start justify-between mb-3"><div><p class="font-semibold text-gray-900">${o.name}</p><p class="text-xs text-gray-400">${o.id} • ${o.phone} • ${o.city}</p></div><div class="flex items-center gap-2"><span class="text-[10px] px-2.5 py-1 rounded-full ${o.status==='Pending'?'bg-amber-50 text-amber-600 border border-amber-200':'bg-green-50 text-green-600 border border-green-200'} font-medium">${o.status}</span>${o.status==='Pending'?`<button onclick="updateOrderStatus(${orders.length-1-i})" class="text-[10px] px-2.5 py-1 rounded-full bg-brand-50 text-brand-600 font-medium hover:bg-brand-100 transition-colors border border-brand-200">Confirm</button>`:''}</div></div><p class="text-xs text-gray-400 mb-2">${o.address}</p><div class="text-xs text-gray-400 space-y-0.5 mb-2">${o.items.map(it=>`<p>• ${it.name} (${it.size}) × ${it.qty} — Rs. ${(it.price*it.qty).toLocaleString()}</p>`).join('')}</div><div class="flex items-center justify-between pt-2 border-t border-surface-200"><span class="text-xs text-gray-400">${o.payment.toUpperCase()} • ${o.date}</span><span class="font-bold text-brand-600">Rs. ${o.total.toLocaleString()}</span></div></div>`).join('');}
+    function updateOrderStatus(i){orders[i].status='Confirmed';localStorage.setItem('km_orders',JSON.stringify(orders));renderAdminOrders();updateAdminDashboard();showToast('Order confirmed!','success');}
+    function deleteProduct(id){if(confirm('Delete this product?')){products=products.filter(p=>p.id!==id);applyFilters();renderAdminProducts();updateAdminDashboard();showToast('Product deleted','info');}}
+    function showAddProductForm(){document.getElementById('addProductForm').classList.remove('hidden');}
+    function hideAddProductForm(){document.getElementById('addProductForm').classList.add('hidden');}
+    function addNewProduct(){const name=document.getElementById('apName').value.trim(),category=document.getElementById('apCategory').value,price=parseInt(document.getElementById('apPrice').value),oldPrice=parseInt(document.getElementById('apOldPrice').value)||null,gender=document.getElementById('apGender').value,sizes=document.getElementById('apSizes').value.split(',').map(s=>s.trim()).filter(Boolean),image=document.getElementById('apImage').value.trim()||'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500&h=600&fit=crop&q=80',desc=document.getElementById('apDesc').value.trim()||'No description.';if(!name||!category||!price){showToast('Fill name, category, and price','error');return;}products.push({id:Date.now(),name,category,price,oldPrice,gender,sizes:sizes.length?sizes:['One Size'],image,desc});hideAddProductForm();updateSizeOptions();applyFilters();renderAdminProducts();updateAdminDashboard();showToast('Product added!','success');['apName','apCategory','apPrice','apOldPrice','apGender','apSizes','apImage','apDesc'].forEach(id=>document.getElementById(id).value='');}
 
-    // ===== SCROLL REVEAL =====
-    function initReveal() {
-        const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.reveal:not(.active)').forEach(el => obs.observe(el));
-    }
+    function initReveal(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.reveal:not(.active)').forEach(el=>obs.observe(el));}
 
-    // ===== INIT =====
-    document.addEventListener('DOMContentLoaded', () => {
-        updateCategoryOptions();
-        updateSizeOptions();
-        applyFilters();
-        initReveal();
-        updateCartUI();
-    });
+    document.addEventListener('DOMContentLoaded',()=>{updateCategoryOptions();updateSizeOptions();applyFilters();initReveal();updateCartUI();});
     </script>
-
 </body>
 </html>
